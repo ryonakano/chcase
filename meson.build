@@ -13,4 +13,4 @@ libchcase_deps = [
 ]
 
 subdir('lib')
-subdir('tests')
+subdir('examples')
