@@ -1,5 +1,5 @@
 test_sources = files(
-    'test.vala'
+    'Application.vala'
 )
 
 test(
