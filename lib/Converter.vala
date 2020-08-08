@@ -22,6 +22,30 @@ public class ChCase.Converter : GLib.Object {
     public Case target_case;
     public Case result_case;
 
+    private string _target_case_name;
+    public string target_case_name {
+        get {
+            return _target_case_name;
+        }
+        set {
+            if (set_target_case_from_string (value)) {
+                _target_case_name = value;
+            }
+        }
+    }
+
+    private string _result_case_name;
+    public string result_case_name {
+        get {
+            return _result_case_name;
+        }
+        set {
+            if (set_result_case_from_string (value)) {
+                _result_case_name = value;
+            }
+        }
+    }
+
     public Converter (Case targ_case, Case res_case) {
         target_case = targ_case;
         result_case = res_case;

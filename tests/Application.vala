@@ -31,6 +31,12 @@ public class Application : GLib.Application {
         test_text_before = "say-hello-to-ch-case";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
+
+        // Change result case to space-separated
+        converter.result_case_name = "space_separated";
+        test_text_before = "say-hello-to-ch-case";
+        test_text_after = converter.convert_case (test_text_before);
+        stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
     }
 
     public static int main (string[] args) {
