@@ -24,7 +24,7 @@ public class ChCase.Converter : GLib.Object {
 
     public Converter (Case targ_case, Case res_case) {
         target_case = targ_case;
-        result_case= res_case;
+        result_case = res_case;
     }
 
     public Converter.from_string (string targ_case, string res_case) {
@@ -131,7 +131,11 @@ public class ChCase.Converter : GLib.Object {
         }
     }
 
-    private void set_regex_from_space_separated (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns, Case result_case) {
+    private void set_regex_from_space_separated (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns,
+                    Case result_case
+    ) {
         switch (result_case) {
             case Case.SPACE_SEPARATED:
                 // The chosen result case is the same with target case, does nothing.
@@ -158,7 +162,11 @@ public class ChCase.Converter : GLib.Object {
         }
     }
 
-    private void set_regex_from_camel_case (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns, Case result_case) {
+    private void set_regex_from_camel_case (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns,
+                    Case result_case
+    ) {
         switch (result_case) {
             case Case.SPACE_SEPARATED:
                 patterns.append_val ("(\\S)([A-Z])");
@@ -186,7 +194,11 @@ public class ChCase.Converter : GLib.Object {
     }
 
 
-    private void set_regex_from_pascal_case (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns, Case result_case) {
+    private void set_regex_from_pascal_case (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns,
+                    Case result_case
+    ) {
         switch (result_case) {
             case Case.SPACE_SEPARATED:
                 patterns.append_val ("(\\S)([A-Z])");
@@ -217,7 +229,11 @@ public class ChCase.Converter : GLib.Object {
         }
     }
 
-    private void set_regex_from_snake_case (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns, Case result_case) {
+    private void set_regex_from_snake_case (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns,
+                    Case result_case
+    ) {
         switch (result_case) {
             case Case.SPACE_SEPARATED:
                 patterns.append_val ("_(.)");
@@ -244,7 +260,11 @@ public class ChCase.Converter : GLib.Object {
         }
     }
 
-    private void set_regex_from_kebab_case (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns, Case result_case) {
+    private void set_regex_from_kebab_case (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns,
+                    Case result_case
+    ) {
         switch (result_case) {
             case Case.SPACE_SEPARATED:
                 patterns.append_val ("-(.)");
