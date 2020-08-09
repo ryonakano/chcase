@@ -117,7 +117,7 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text, in string.
          * 
-         * @return `true` if the case is one of {@link ChCase.Case}
+         * @return true if the case is one of {@link ChCase.Case}
          */
         public bool set_target_case_from_string (string targ_case) {
             switch (targ_case) {
