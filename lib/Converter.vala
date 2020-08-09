@@ -31,6 +31,11 @@ namespace ChCase {
     * }}}
     */
     public class Converter : GLib.Object {
+        private delegate void SetRegexFunc (
+                    ref GLib.Array<string> patterns,
+                    ref GLib.Array<string> replace_patterns
+        );
+
         private GLib.Array<string> patterns;
         private GLib.Array<string> replace_patterns;
 
@@ -183,7 +188,11 @@ namespace ChCase {
          * @return Result text after conversion
          */
         public string convert_case (owned string text) {
-            set_regex ();
+            patterns = new GLib.Array<string> ();
+            replace_patterns = new GLib.Array<string> ();
+
+            SetRegexFunc regex_func = set_regex_func ();
+            regex_func (ref patterns, ref replace_patterns);
 
             MatchInfo match_info;
             try {
@@ -200,37 +209,26 @@ namespace ChCase {
             return text;
         }
 
-        private void set_regex () {
-            patterns = new GLib.Array<string> ();
-            replace_patterns = new GLib.Array<string> ();
-
+        private SetRegexFunc set_regex_func () {
             switch (target_case) {
                 case Case.SPACE_SEPARATED:
-                    set_regex_from_space_separated (ref patterns, ref replace_patterns, result_case);
-                    break;
+                    return set_regex_from_space_separated;
                 case Case.CAMEL:
-                    set_regex_from_camel_case (ref patterns, ref replace_patterns, result_case);
-                    break;
+                    return set_regex_from_camel_case;
                 case Case.PASCAL:
-                    set_regex_from_pascal_case (ref patterns, ref replace_patterns, result_case);
-                    break;
+                    return set_regex_from_pascal_case;
                 case Case.SNAKE:
-                    set_regex_from_snake_case (ref patterns, ref replace_patterns, result_case);
-                    break;
+                    return set_regex_from_snake_case;
                 case Case.KEBAB:
-                    set_regex_from_kebab_case (ref patterns, ref replace_patterns, result_case);
-                    break;
-            }
-
-            if (patterns.length != replace_patterns.length) {
-                warning ("The numbers of patterns to find maching strings and ones to replace them don't match!");
+                    return set_regex_from_kebab_case;
+                default:
+                    assert_not_reached ();
             }
         }
 
         private void set_regex_from_space_separated (
                         ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns,
-                        Case result_case
+                        ref GLib.Array<string> replace_patterns
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
@@ -260,8 +258,7 @@ namespace ChCase {
 
         private void set_regex_from_camel_case (
                         ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns,
-                        Case result_case
+                        ref GLib.Array<string> replace_patterns
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
@@ -292,8 +289,7 @@ namespace ChCase {
 
         private void set_regex_from_pascal_case (
                         ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns,
-                        Case result_case
+                        ref GLib.Array<string> replace_patterns
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
@@ -327,8 +323,7 @@ namespace ChCase {
 
         private void set_regex_from_snake_case (
                         ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns,
-                        Case result_case
+                        ref GLib.Array<string> replace_patterns
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
@@ -358,8 +353,7 @@ namespace ChCase {
 
         private void set_regex_from_kebab_case (
                         ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns,
-                        Case result_case
+                        ref GLib.Array<string> replace_patterns
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
