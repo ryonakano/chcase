@@ -16,13 +16,38 @@
 */
 
 namespace ChCase {
+    /**
+     * Represents the case of a text.
+     */
     public enum Case {
+        /**
+         * Text that uses a space for separation, e.g. "do null check before quitting".
+         */
         SPACE_SEPARATED,
+
+        /**
+         * Camel Case text, e.g. "doNullCheckBeforeQuitting".
+         */
         CAMEL,
+
+        /**
+         * Pascal Case text, e.g. "DoNullCheckBeforeQuitting".
+         */
         PASCAL,
+
+        /**
+         * Snake Case text, e.g. "do_null_check_before_quitting".
+         */
         SNAKE,
+
+        /**
+         * Kebab Case text, e.g. "do-null-check-before-quitting".
+         */
         KEBAB;
 
+        /**
+         * Return the case in string.
+         */
         public string to_string () {
             switch (this) {
                 case Case.SPACE_SEPARATED:
