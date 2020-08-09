@@ -47,6 +47,8 @@ namespace ChCase {
 
         /**
          * Return the case in string.
+         * 
+         * @return the case represented in string.
          */
         public string to_string () {
             switch (this) {
