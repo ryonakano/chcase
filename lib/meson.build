@@ -4,16 +4,16 @@ sources = files(
 )
 
 chcase_lib = library(
-    'libchcase',
+    'chcase',
     sources,
     dependencies: libchcase_deps,
-    vala_header: 'libchcase.h',
+    vala_header: 'chcase.h',
     install: true,
     install_dir: [true, true, true]
 )
 
 install_data(
-    'libchcase.deps',
+    'chcase.deps',
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
 )
 
@@ -25,9 +25,9 @@ libchcase = declare_dependency(
 
 chcase_pc = pkgconfig.generate(
     chcase_lib,
-    name: 'libchcase',
+    name: 'chcase',
     requires: libchcase_deps,
-    subdirs: ['libchcase'],
+    subdirs: ['chcase'],
     description: 'A small library to convert case of a given string',
     version: meson.project_version(),
     url: 'https://github.com/ryonakano/chcase',
