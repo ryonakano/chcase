@@ -75,12 +75,18 @@ namespace ChCase {
         private string _result_case_name;
 
         /**
+         * Creates a new {@link ChCase.Converter} object with no specified cases.
+         */
+        public Converter () {
+        }
+
+        /**
          * Creates a new {@link ChCase.Converter} object with the specified cases.
          * 
          * @param targ_case Expected case as representing input text
          * @param res_case Case for output text
          */
-        public Converter (Case targ_case, Case res_case) {
+        public Converter.with_case (Case targ_case, Case res_case) {
             target_case = targ_case;
             result_case = res_case;
         }
@@ -91,7 +97,7 @@ namespace ChCase {
          * @param targ_case Expected case as representing input text, in string
          * @param res_case Case for output text, in string
          */
-        public Converter.from_string (string targ_case, string res_case) {
+        public Converter.with_case_from_string (string targ_case, string res_case) {
             set_target_case_from_string (targ_case);
             set_result_case_from_string (res_case);
         }

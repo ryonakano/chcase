@@ -8,7 +8,7 @@ public class Application : GLib.Application {
 
     protected override void activate () {
         // Declare new instance of Converter with specified cases
-        var converter = new ChCase.Converter (ChCase.Case.SPACE_SEPARATED, ChCase.Case.CAMEL);
+        var converter = new ChCase.Converter.with_case (ChCase.Case.SPACE_SEPARATED, ChCase.Case.CAMEL);
 
         string test_text_before = "say hello to ChCase";
         string test_text_after = converter.convert_case (test_text_before);
