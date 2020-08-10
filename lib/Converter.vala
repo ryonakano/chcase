@@ -42,7 +42,15 @@ namespace ChCase {
         /**
          * Currently specified and expected case as representing input text.
          */
+        [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.source_case")]
         public Case target_case;
+
+        /**
+         * Currently specified and expected case as representing input text.
+         * 
+         * @since 1.1.0
+         */
+        public Case source_case;
 
         /**
          * Currently specified case for output text.
@@ -52,17 +60,34 @@ namespace ChCase {
         /**
          * Currently specified and expected case as representing input text, in string.
          */
+        [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.source_case_name")]
         public string target_case_name {
             get {
-                return _target_case_name;
+                return _source_case_name;
             }
             set {
-                if (set_target_case_from_string (value)) {
-                    _target_case_name = value;
+                if (set_source_case_from_string (value)) {
+                    _source_case_name = value;
                 }
             }
         }
-        private string _target_case_name;
+
+        /**
+         * Currently specified and expected case as representing input text, in string.
+         * 
+         * @since 1.1.0
+         */
+        public string source_case_name {
+            get {
+                return _source_case_name;
+            }
+            set {
+                if (set_source_case_from_string (value)) {
+                    _source_case_name = value;
+                }
+            }
+        }
+        private string _source_case_name;
 
         /**
          * Currently specified case for output text, in string.
@@ -88,22 +113,23 @@ namespace ChCase {
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases.
          * 
-         * @param targ_case Expected case as representing input text
+         * @param src_case Expected case as representing input text
          * @param res_case Case for output text
          */
-        public Converter.with_case (Case targ_case, Case res_case) {
-            target_case = targ_case;
+        public Converter.with_case (Case src_case, Case res_case) {
+            target_case = src_case; // Deprecated
+            source_case = src_case;
             result_case = res_case;
         }
 
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases in string.
          * 
-         * @param targ_case Expected case as representing input text, in string
+         * @param src_case Expected case as representing input text, in string
          * @param res_case Case for output text, in string
          */
-        public Converter.with_case_from_string (string targ_case, string res_case) {
-            set_target_case_from_string (targ_case);
+        public Converter.with_case_from_string (string src_case, string res_case) {
+            set_source_case_from_string (src_case);
             set_result_case_from_string (res_case);
         }
 
@@ -112,8 +138,21 @@ namespace ChCase {
          * 
          * @param targ_case Expected case as representing input text
          */
+        [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.set_source_case")]
         public void set_target_case (Case targ_case) {
-            target_case = targ_case;
+            target_case = targ_case; // Deprecated
+            source_case = targ_case;
+        }
+
+        /**
+         * Set currently specified and expected case as representing input text.
+         * 
+         * @param targ_case Expected case as representing input text
+         * @since 1.1.0
+         */
+        public void set_source_case (Case src_case) {
+            target_case = src_case; // Deprecated
+            source_case = src_case;
         }
 
         /**
@@ -130,22 +169,39 @@ namespace ChCase {
          * 
          * @return true if the case is one of {@link ChCase.Case}
          */
+        [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.set_source_case_from_string")]
         public bool set_target_case_from_string (string targ_case) {
-            switch (targ_case) {
+            return set_source_case_from_string (targ_case);
+        }
+
+        /**
+         * Set currently specified and expected case as representing input text, in string.
+         * 
+         * @param src_case Expected case as representing input text
+         * @return true if the case is one of {@link ChCase.Case}
+         * @since 1.1.0
+         */
+        public bool set_source_case_from_string (string src_case) {
+            switch (src_case) {
                 case "space_separated":
-                    target_case = Case.SPACE_SEPARATED;
+                    target_case = Case.SPACE_SEPARATED; // Deprecated
+                    source_case = Case.SPACE_SEPARATED;
                     return true;
                 case "camel":
-                    target_case = Case.CAMEL;
+                    target_case = Case.CAMEL; // Deprecated
+                    source_case = Case.CAMEL;
                     return true;
                 case "pascal":
-                    target_case = Case.PASCAL;
+                    target_case = Case.PASCAL; // Deprecated
+                    source_case = Case.PASCAL;
                     return true;
                 case "snake":
-                    target_case = Case.SNAKE;
+                    target_case = Case.SNAKE; // Deprecated
+                    source_case = Case.SNAKE;
                     return true;
                 case "kebab":
-                    target_case = Case.KEBAB;
+                    target_case = Case.KEBAB; // Deprecated
+                    source_case = Case.KEBAB;
                     return true;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -210,7 +266,7 @@ namespace ChCase {
         }
 
         private SetRegexFunc set_regex_func () {
-            switch (target_case) {
+            switch (source_case) {
                 case Case.SPACE_SEPARATED:
                     return set_regex_from_space_separated;
                 case Case.CAMEL:
@@ -232,7 +288,7 @@ namespace ChCase {
         ) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
-                    // The chosen result case is the same with target case, does nothing.
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.CAMEL:
                     patterns.append_val (" (.)");
@@ -266,7 +322,7 @@ namespace ChCase {
                     replace_patterns.append_val ("\\1 \\2");
                     break;
                 case Case.CAMEL:
-                    // The chosen result case is the same with target case, does nothing.
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.PASCAL:
                     patterns.append_val ("^([a-z])");
@@ -301,7 +357,7 @@ namespace ChCase {
                     replace_patterns.append_val ("\\l\\1");
                     break;
                 case Case.PASCAL:
-                    // The chosen result case is the same with target case, does nothing.
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.SNAKE:
                     patterns.append_val ("^([A-Z])");
@@ -339,7 +395,7 @@ namespace ChCase {
                     replace_patterns.append_val ("\\u\\2");
                     break;
                 case Case.SNAKE:
-                    // The chosen result case is the same with target case, does nothing.
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.KEBAB:
                     patterns.append_val ("(_)(.)");
@@ -373,7 +429,7 @@ namespace ChCase {
                     replace_patterns.append_val ("_\\1");
                     break;
                 case Case.KEBAB:
-                    // The chosen result case is the same with target case, does nothing.
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 default:
                     warning ("Unexpected case, does nothing.");
