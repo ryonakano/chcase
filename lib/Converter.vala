@@ -71,7 +71,17 @@ namespace ChCase {
         /**
          * Currently specified case for output text.
          */
-        public Case result_case;
+        public Case result_case {
+            get {
+                return _result_case;
+            }
+            set {
+                _result_case = value;
+                _result_case_name = value.to_string ();
+            }
+        }
+        private Case _result_case;
+
 
         /**
          * Currently specified and expected case as representing input text, in string.
@@ -178,6 +188,7 @@ namespace ChCase {
          * 
          * @param res_case Case for output text
          */
+        [CCode (cname = "_set_result_case")]
         public void set_result_case (Case res_case) {
             result_case = res_case;
         }
