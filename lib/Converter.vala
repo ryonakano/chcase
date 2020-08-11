@@ -79,7 +79,6 @@ namespace ChCase {
         }
         private Case _result_case;
 
-
         /**
          * Currently specified and expected case as representing input text, in string.
          */
@@ -188,6 +187,28 @@ namespace ChCase {
         }
 
         /**
+         * Get currently specified and expected case as representing input text.
+         * 
+         * @return Expected case as representing input text
+         * @since 1.1.0
+         */
+        [CCode (cname = "_get_source_case")]
+        public Case get_source_case () {
+            return source_case;
+        }
+
+        /**
+         * Get currently specified case for output text.
+         * 
+         * @return Case for output text
+         * @since 1.1.0
+         */
+        [CCode (cname = "_get_result_case")]
+        public Case get_result_case () {
+            return result_case;
+        }
+
+        /**
          * Set currently specified and expected case as representing input text, in string.
          * 
          * @return true if the case is one of {@link ChCase.Case}
@@ -253,6 +274,26 @@ namespace ChCase {
                     warning ("Unexpected case, does nothing.");
                     return false;
             }
+        }
+
+        /**
+         * Get currently specified and expected case as representing input text, in string.
+         * 
+         * @return Expected case as representing input text
+         * @since 1.1.0
+         */
+        public string get_source_case_from_string () {
+            return source_case_name;
+        }
+
+        /**
+         * Get currently specified case for output text, in string.
+         * 
+         * @return Case for output text
+         * @since 1.1.0
+         */
+        public string get_result_case_from_string () {
+            return result_case_name;
         }
 
         /**
