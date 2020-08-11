@@ -36,9 +36,6 @@ namespace ChCase {
                     ref GLib.Array<string> replace_patterns
         );
 
-        private GLib.Array<string> patterns;
-        private GLib.Array<string> replace_patterns;
-
         /**
          * Currently specified and expected case as representing input text.
          */
@@ -265,8 +262,8 @@ namespace ChCase {
          * @return Result text after conversion
          */
         public string convert_case (owned string text) {
-            patterns = new GLib.Array<string> ();
-            replace_patterns = new GLib.Array<string> ();
+            var patterns = new GLib.Array<string> ();
+            var replace_patterns = new GLib.Array<string> ();
 
             SetRegexFunc regex_func = set_regex_func ();
             regex_func (ref patterns, ref replace_patterns);
