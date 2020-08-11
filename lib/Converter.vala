@@ -158,7 +158,6 @@ namespace ChCase {
          * @param targ_case Expected case as representing input text
          * @since 1.1.0
          */
-        [CCode (cname = "_set_source_case")]
         public void set_source_case (Case src_case) {
             target_case = src_case; // Deprecated
             source_case = src_case;
