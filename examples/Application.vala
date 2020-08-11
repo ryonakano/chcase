@@ -14,8 +14,8 @@ public class Application : GLib.Application {
         string test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change target case to PascalCase
-        converter.set_target_case (ChCase.Case.PASCAL);
+        // Change source case to PascalCase
+        converter.set_source_case (ChCase.Case.PASCAL);
         test_text_before = "ThisShouldBeConvertedToCamelCase";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
@@ -26,8 +26,8 @@ public class Application : GLib.Application {
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change target case to kebab-case
-        converter.set_target_case_from_string ("kebab");
+        // Change source case to kebab-case
+        converter.set_source_case_from_string ("kebab");
         test_text_before = "this-should-be-converted-to-snake-case";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
