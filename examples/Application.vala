@@ -10,31 +10,31 @@ public class Application : GLib.Application {
         // Declare new instance of Converter with specified cases
         var converter = new ChCase.Converter.with_case (ChCase.Case.SPACE_SEPARATED, ChCase.Case.CAMEL);
 
-        string test_text_before = "say hello to ChCase";
+        string test_text_before = "this should be converted to camel case";
         string test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
         // Change target case to PascalCase
         converter.set_target_case (ChCase.Case.PASCAL);
-        test_text_before = "SayHelloToChCase";
+        test_text_before = "ThisShouldBeConvertedToCamelCase";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
         // Change result case to snake_case
         converter.result_case = ChCase.Case.SNAKE;
-        test_text_before = test_text_after;
+        test_text_before = "thisShouldBeConvertedToSnakeCase";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
         // Change target case to kebab-case
         converter.set_target_case_from_string ("kebab");
-        test_text_before = "say-hello-to-ch-case";
+        test_text_before = "this-should-be-converted-to-snake-case";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
         // Change result case to space-separated
         converter.result_case_name = "space_separated";
-        test_text_before = "say-hello-to-ch-case";
+        test_text_before = "this-should-be-converted-to-space-separated";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
     }
