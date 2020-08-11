@@ -34,3 +34,7 @@ Run `meson build` to configure the build environment. Change to the build direct
 To install, use `ninja install`
 
     sudo ninja install
+
+To see a demo app, run:
+
+    ./build/examples/example
