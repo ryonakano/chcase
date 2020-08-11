@@ -57,7 +57,16 @@ namespace ChCase {
          * 
          * @since 1.1.0
          */
-        public Case source_case;
+        public Case source_case {
+            get {
+                return _source_case;
+            }
+            set {
+                _source_case = value;
+                _source_case_name = value.to_string ();
+            }
+        }
+        private Case _source_case;
 
         /**
          * Currently specified case for output text.
@@ -158,6 +167,7 @@ namespace ChCase {
          * @param targ_case Expected case as representing input text
          * @since 1.1.0
          */
+        [CCode (cname = "_set_source_case")]
         public void set_source_case (Case src_case) {
             target_case = src_case; // Deprecated
             source_case = src_case;
@@ -192,23 +202,23 @@ namespace ChCase {
         public bool set_source_case_from_string (string src_case) {
             switch (src_case) {
                 case "space_separated":
-                    target_case = Case.SPACE_SEPARATED; // Deprecated
+                    //  target_case = Case.SPACE_SEPARATED; // Deprecated
                     source_case = Case.SPACE_SEPARATED;
                     return true;
                 case "camel":
-                    target_case = Case.CAMEL; // Deprecated
+                    //  target_case = Case.CAMEL; // Deprecated
                     source_case = Case.CAMEL;
                     return true;
                 case "pascal":
-                    target_case = Case.PASCAL; // Deprecated
+                    //  target_case = Case.PASCAL; // Deprecated
                     source_case = Case.PASCAL;
                     return true;
                 case "snake":
-                    target_case = Case.SNAKE; // Deprecated
+                    //  target_case = Case.SNAKE; // Deprecated
                     source_case = Case.SNAKE;
                     return true;
                 case "kebab":
-                    target_case = Case.KEBAB; // Deprecated
+                    //  target_case = Case.KEBAB; // Deprecated
                     source_case = Case.KEBAB;
                     return true;
                 default:
