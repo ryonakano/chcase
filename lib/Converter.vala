@@ -43,7 +43,14 @@ namespace ChCase {
          * Currently specified and expected case as representing input text.
          */
         [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.source_case")]
-        public Case target_case;
+        public Case target_case {
+            get {
+                return source_case;
+            }
+            set {
+                source_case = value;
+            }
+        }
 
         /**
          * Currently specified and expected case as representing input text.
@@ -139,6 +146,7 @@ namespace ChCase {
          * @param targ_case Expected case as representing input text
          */
         [Version (deprecated = true, deprecated_since = "", replacement = "ChCase.Converter.set_source_case")]
+        [CCode (cname = "_set_target_case")]
         public void set_target_case (Case targ_case) {
             target_case = targ_case; // Deprecated
             source_case = targ_case;
@@ -150,6 +158,7 @@ namespace ChCase {
          * @param targ_case Expected case as representing input text
          * @since 1.1.0
          */
+        [CCode (cname = "_set_source_case")]
         public void set_source_case (Case src_case) {
             target_case = src_case; // Deprecated
             source_case = src_case;
