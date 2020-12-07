@@ -37,6 +37,12 @@ public class Application : GLib.Application {
         test_text_before = "this-should-be-converted-to-space-separated";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
+
+        // Change source case to Sentence case
+        converter.source_case = ChCase.Case.SENTENCE;
+        test_text_before = "This should be converted to space separated";
+        test_text_after = converter.convert_case (test_text_before);
+        stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
     }
 
     public static int main (string[] args) {

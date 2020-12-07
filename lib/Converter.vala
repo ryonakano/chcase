@@ -193,6 +193,9 @@ namespace ChCase {
                 case "kebab":
                     source_case = Case.KEBAB;
                     return true;
+                case "sentence":
+                    source_case = Case.SENTENCE;
+                    return true;
                 default:
                     warning ("Unexpected case, does nothing.");
                     return false;
@@ -220,6 +223,9 @@ namespace ChCase {
                     return true;
                 case "kebab":
                     result_case = Case.KEBAB;
+                    return true;
+                case "sentence":
+                    result_case = Case.SENTENCE;
                     return true;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -287,6 +293,8 @@ namespace ChCase {
                     return set_regex_from_snake_case;
                 case Case.KEBAB:
                     return set_regex_from_kebab_case;
+                case Case.SENTENCE:
+                    return set_regex_from_sentence_case;
                 default:
                     assert_not_reached ();
             }
@@ -315,6 +323,10 @@ namespace ChCase {
                 case Case.KEBAB:
                     patterns.append_val ("( )(.)");
                     replace_patterns.append_val ("-\\2");
+                    break;
+                case Case.SENTENCE:
+                    patterns.append_val ("^(.)");
+                    replace_patterns.append_val ("\\u\\1");
                     break;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -345,6 +357,12 @@ namespace ChCase {
                 case Case.KEBAB:
                     patterns.append_val ("([A-Z])");
                     replace_patterns.append_val ("-\\l\\1");
+                    break;
+                case Case.SENTENCE:
+                    patterns.append_val ("([A-Z])");
+                    replace_patterns.append_val (" \\l\\1");
+                    patterns.append_val ("^(.)");
+                    replace_patterns.append_val ("\\u\\1");
                     break;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -381,6 +399,12 @@ namespace ChCase {
                     patterns.append_val ("([A-Z])");
                     replace_patterns.append_val ("-\\l\\1");
                     break;
+                case Case.SENTENCE:
+                    patterns.append_val ("([A-Z])");
+                    replace_patterns.append_val (" \\l\\1");
+                    patterns.append_val ("^ (.)");
+                    replace_patterns.append_val ("\\u\\1");
+                    break;
                 default:
                     warning ("Unexpected case, does nothing.");
                     break;
@@ -411,6 +435,12 @@ namespace ChCase {
                     patterns.append_val ("(_)(.)");
                     replace_patterns.append_val ("-\\2");
                     break;
+                case Case.SENTENCE:
+                    patterns.append_val ("^(.)");
+                    replace_patterns.append_val ("\\u\\1");
+                    patterns.append_val ("_(.)");
+                    replace_patterns.append_val (" \\1");
+                    break;
                 default:
                     warning ("Unexpected case, does nothing.");
                     break;
@@ -439,6 +469,52 @@ namespace ChCase {
                     replace_patterns.append_val ("_\\1");
                     break;
                 case Case.KEBAB:
+                    // The chosen result case is the same with source case, does nothing.
+                    break;
+                case Case.SENTENCE:
+                    patterns.append_val ("^(.)");
+                    replace_patterns.append_val ("\\u\\1");
+                    patterns.append_val ("-(.)");
+                    replace_patterns.append_val (" \\1");
+                    break;
+                default:
+                    warning ("Unexpected case, does nothing.");
+                    break;
+            }
+        }
+
+        private void set_regex_from_sentence_case (
+                        ref GLib.Array<string> patterns,
+                        ref GLib.Array<string> replace_patterns
+        ) {
+            switch (result_case) {
+                case Case.SPACE_SEPARATED:
+                    patterns.append_val ("^([A-Z])");
+                    replace_patterns.append_val ("\\l\\1");
+                    break;
+                case Case.CAMEL:
+                    patterns.append_val ("^([A-Z])");
+                    replace_patterns.append_val ("\\l\\1");
+                    patterns.append_val (" (.)");
+                    replace_patterns.append_val ("\\u\\1");
+                    break;
+                case Case.PASCAL:
+                    patterns.append_val (" (.)");
+                    replace_patterns.append_val ("\\u\\1");
+                    break;
+                case Case.SNAKE:
+                    patterns.append_val ("^([A-Z])");
+                    replace_patterns.append_val ("\\l\\1");
+                    patterns.append_val (" (.)");
+                    replace_patterns.append_val ("_\\1");
+                    break;
+                case Case.KEBAB:
+                    patterns.append_val ("^([A-Z])");
+                    replace_patterns.append_val ("\\l\\1");
+                    patterns.append_val (" (.)");
+                    replace_patterns.append_val ("-\\1");
+                    break;
+                case Case.SENTENCE:
                     // The chosen result case is the same with source case, does nothing.
                     break;
                 default:

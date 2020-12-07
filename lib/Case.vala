@@ -43,7 +43,12 @@ namespace ChCase {
         /**
          * Kebab Case text, e.g. "do-null-check-before-quitting".
          */
-        KEBAB;
+        KEBAB,
+
+        /**
+         * Sentence Case text, e.g. "Do null check before quitting".
+         */
+        SENTENCE;
 
         /**
          * Return the case in string.
@@ -62,6 +67,8 @@ namespace ChCase {
                     return "snake";
                 case Case.KEBAB:
                     return "kebab";
+                case Case.SENTENCE:
+                    return "sentence";
                 default:
                     assert_not_reached ();
             }
