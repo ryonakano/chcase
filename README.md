@@ -4,7 +4,7 @@ ChCase is a small library to convert case of a given string.
 This is my first attempt to create a library (yet small and straightforward though).
 
 ## Example
-You can convert your text between camelCase, PascalCase, snake_case, kebab-case, and space-separated.
+You can convert your text between camelCase, PascalCase, snake_case, kebab-case, Sentence case, and space-separated.
 
 Set the case for input string and result string and then perform conversion.
 
