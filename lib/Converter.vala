@@ -38,19 +38,6 @@ namespace ChCase {
 
         /**
          * Currently specified and expected case as representing input text.
-         */
-        [Version (deprecated = true, replacement = "ChCase.Converter.source_case")]
-        public Case target_case {
-            get {
-                return source_case;
-            }
-            set {
-                source_case = value;
-            }
-        }
-
-        /**
-         * Currently specified and expected case as representing input text.
          * 
          * @since 1.1.0
          */
@@ -78,21 +65,6 @@ namespace ChCase {
             }
         }
         private Case _result_case;
-
-        /**
-         * Currently specified and expected case as representing input text, in string.
-         */
-        [Version (deprecated = true, replacement = "ChCase.Converter.source_case_name")]
-        public string target_case_name {
-            get {
-                return _source_case_name;
-            }
-            set {
-                if (set_source_case_from_string (value)) {
-                    _source_case_name = value;
-                }
-            }
-        }
 
         /**
          * Currently specified and expected case as representing input text, in string.
@@ -158,17 +130,6 @@ namespace ChCase {
          * Set currently specified and expected case as representing input text.
          * 
          * @param targ_case Expected case as representing input text
-         */
-        [Version (deprecated = true, replacement = "ChCase.Converter.set_source_case")]
-        [CCode (cname = "_set_target_case")]
-        public void set_target_case (Case targ_case) {
-            source_case = targ_case;
-        }
-
-        /**
-         * Set currently specified and expected case as representing input text.
-         * 
-         * @param targ_case Expected case as representing input text
          * @since 1.1.0
          */
         [CCode (cname = "_set_source_case")]
@@ -206,16 +167,6 @@ namespace ChCase {
         [CCode (cname = "_get_result_case")]
         public Case get_result_case () {
             return result_case;
-        }
-
-        /**
-         * Set currently specified and expected case as representing input text, in string.
-         * 
-         * @return true if the case is one of {@link ChCase.Case}
-         */
-        [Version (deprecated = true, replacement = "ChCase.Converter.set_source_case_from_string")]
-        public bool set_target_case_from_string (string targ_case) {
-            return set_source_case_from_string (targ_case);
         }
 
         /**
