@@ -31,10 +31,6 @@ namespace ChCase {
     * }}}
     */
     public class Converter : GLib.Object {
-        private delegate void SetRegexFunc (
-                    ref GLib.Array<string> patterns,
-                    ref GLib.Array<string> replace_patterns
-        );
 
         /**
          * Currently specified and expected case as representing input text.
@@ -263,8 +259,31 @@ namespace ChCase {
             var patterns = new GLib.Array<string> ();
             var replace_patterns = new GLib.Array<string> ();
 
-            SetRegexFunc regex_func = set_regex_func ();
-            regex_func (ref patterns, ref replace_patterns);
+            RegexPattern.Pattern regex_pattern;
+            switch (source_case) {
+                case Case.SPACE_SEPARATED:
+                    regex_pattern = new RegexPattern.SpaceSeparated (result_case);
+                    break;
+                case Case.CAMEL:
+                    regex_pattern = new RegexPattern.Camel (result_case);
+                    break;
+                case Case.PASCAL:
+                    regex_pattern = new RegexPattern.Pascal (result_case);
+                    break;
+                case Case.SNAKE:
+                    regex_pattern = new RegexPattern.Snake (result_case);
+                    break;
+                case Case.KEBAB:
+                    regex_pattern = new RegexPattern.Kebab (result_case);
+                    break;
+                case Case.SENTENCE:
+                    regex_pattern = new RegexPattern.Sentence (result_case);
+                    break;
+                default:
+                    assert_not_reached ();
+            }
+
+            regex_pattern.set_regex (ref patterns, ref replace_patterns);
 
             MatchInfo match_info;
             try {
@@ -279,248 +298,6 @@ namespace ChCase {
             }
 
             return text;
-        }
-
-        private SetRegexFunc set_regex_func () {
-            switch (source_case) {
-                case Case.SPACE_SEPARATED:
-                    return set_regex_from_space_separated;
-                case Case.CAMEL:
-                    return set_regex_from_camel_case;
-                case Case.PASCAL:
-                    return set_regex_from_pascal_case;
-                case Case.SNAKE:
-                    return set_regex_from_snake_case;
-                case Case.KEBAB:
-                    return set_regex_from_kebab_case;
-                case Case.SENTENCE:
-                    return set_regex_from_sentence_case;
-                default:
-                    assert_not_reached ();
-            }
-        }
-
-        private void set_regex_from_space_separated (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val ("( |^)(.)");
-                    replace_patterns.append_val ("\\u\\2");
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("_\\1");
-                    break;
-                case Case.KEBAB:
-                    patterns.append_val ("( )(.)");
-                    replace_patterns.append_val ("-\\2");
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("^(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
-        }
-
-        private void set_regex_from_camel_case (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("(\\S)([A-Z])");
-                    replace_patterns.append_val ("\\1 \\2");
-                    break;
-                case Case.CAMEL:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val ("^([a-z])");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val ("_\\l\\1");
-                    break;
-                case Case.KEBAB:
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val ("-\\l\\1");
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val (" \\l\\1");
-                    patterns.append_val ("^(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
-        }
-
-
-        private void set_regex_from_pascal_case (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("(\\S)([A-Z])");
-                    replace_patterns.append_val ("\\1 \\2");
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    break;
-                case Case.PASCAL:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val ("_\\l\\1");
-                    break;
-                case Case.KEBAB:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val ("-\\l\\1");
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("([A-Z])");
-                    replace_patterns.append_val (" \\l\\1");
-                    patterns.append_val ("^ (.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
-        }
-
-        private void set_regex_from_snake_case (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("_(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val ("_(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val ("(_|^)(.)");
-                    replace_patterns.append_val ("\\u\\2");
-                    break;
-                case Case.SNAKE:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.KEBAB:
-                    patterns.append_val ("(_)(.)");
-                    replace_patterns.append_val ("-\\2");
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("^(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    patterns.append_val ("_(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
-        }
-
-        private void set_regex_from_kebab_case (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val ("(-|^)(.)");
-                    replace_patterns.append_val ("\\u\\2");
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val ("_\\1");
-                    break;
-                case Case.KEBAB:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("^(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
-        }
-
-        private void set_regex_from_sentence_case (
-                        ref GLib.Array<string> patterns,
-                        ref GLib.Array<string> replace_patterns
-        ) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("_\\1");
-                    break;
-                case Case.KEBAB:
-                    patterns.append_val ("^([A-Z])");
-                    replace_patterns.append_val ("\\l\\1");
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("-\\1");
-                    break;
-                case Case.SENTENCE:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
         }
     }
 }
