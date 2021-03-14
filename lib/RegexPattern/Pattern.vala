@@ -16,13 +16,26 @@
 */
 
 namespace ChCase.RegexPattern {
+
+    /**
+    * An abstract class for each case.
+    *
+    * Set a set of regex to be used when converting case. This class should not be used outside of the library.
+    *
+    * @since 2.1.0
+    */
     protected abstract class Pattern : GLib.Object {
-        public Case result_case { get; construct; }
+        protected Case result_case;
 
         protected Pattern (Case result_case) {
-            Object (result_case: result_case);
+            this.result_case = result_case;
         }
 
+        /**
+         * Set regex patterns―one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
         public abstract void set_regex (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns);
     }
 }
