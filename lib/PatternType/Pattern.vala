@@ -18,9 +18,9 @@
 namespace ChCase.PatternType {
 
     /**
-    * An abstract class for each case.
+    * An abstract class to set regex pattern to be used when converting case.
     *
-    * Set a set of regex to be used when converting case. This class should not be used outside of the library.
+    * This class should not be used outside of the library.
     *
     * @since 2.1.0
     */
