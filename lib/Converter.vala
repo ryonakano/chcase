@@ -259,25 +259,25 @@ namespace ChCase {
             var patterns = new GLib.Array<string> ();
             var replace_patterns = new GLib.Array<string> ();
 
-            RegexPattern.Pattern regex_pattern;
+            PatternType.Pattern regex_pattern;
             switch (source_case) {
                 case Case.SPACE_SEPARATED:
-                    regex_pattern = new RegexPattern.SpaceSeparated (result_case);
+                    regex_pattern = new PatternType.SpaceSeparated (result_case);
                     break;
                 case Case.CAMEL:
-                    regex_pattern = new RegexPattern.Camel (result_case);
+                    regex_pattern = new PatternType.Camel (result_case);
                     break;
                 case Case.PASCAL:
-                    regex_pattern = new RegexPattern.Pascal (result_case);
+                    regex_pattern = new PatternType.Pascal (result_case);
                     break;
                 case Case.SNAKE:
-                    regex_pattern = new RegexPattern.Snake (result_case);
+                    regex_pattern = new PatternType.Snake (result_case);
                     break;
                 case Case.KEBAB:
-                    regex_pattern = new RegexPattern.Kebab (result_case);
+                    regex_pattern = new PatternType.Kebab (result_case);
                     break;
                 case Case.SENTENCE:
-                    regex_pattern = new RegexPattern.Sentence (result_case);
+                    regex_pattern = new PatternType.Sentence (result_case);
                     break;
                 default:
                     assert_not_reached ();

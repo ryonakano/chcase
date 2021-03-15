@@ -15,37 +15,37 @@
 * License along with this library. If not, see <https://www.gnu.org/licenses/>.
 */
 
-namespace ChCase.RegexPattern {
-    public class Snake : Pattern {
-        public Snake (Case result_case) {
+namespace ChCase.PatternType {
+    public class Kebab : Pattern {
+        public Kebab (Case result_case) {
             base (result_case);
         }
 
         public override void set_regex (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
-                    patterns.append_val ("_(.)");
+                    patterns.append_val ("-(.)");
                     replace_patterns.append_val (" \\1");
                     break;
                 case Case.CAMEL:
-                    patterns.append_val ("_(.)");
+                    patterns.append_val ("-(.)");
                     replace_patterns.append_val ("\\u\\1");
                     break;
                 case Case.PASCAL:
-                    patterns.append_val ("(_|^)(.)");
+                    patterns.append_val ("(-|^)(.)");
                     replace_patterns.append_val ("\\u\\2");
                     break;
                 case Case.SNAKE:
-                    // The chosen result case is the same with source case, does nothing.
+                    patterns.append_val ("-(.)");
+                    replace_patterns.append_val ("_\\1");
                     break;
                 case Case.KEBAB:
-                    patterns.append_val ("(_)(.)");
-                    replace_patterns.append_val ("-\\2");
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.SENTENCE:
                     patterns.append_val ("^(.)");
                     replace_patterns.append_val ("\\u\\1");
-                    patterns.append_val ("_(.)");
+                    patterns.append_val ("-(.)");
                     replace_patterns.append_val (" \\1");
                     break;
                 default:

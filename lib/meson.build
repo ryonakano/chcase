@@ -1,11 +1,11 @@
 sources = files(
-    'RegexPattern/Case/Camel.vala',
-    'RegexPattern/Case/Kebab.vala',
-    'RegexPattern/Case/Pascal.vala',
-    'RegexPattern/Case/Sentence.vala',
-    'RegexPattern/Case/Snake.vala',
-    'RegexPattern/Case/SpaceSeparated.vala',
-    'RegexPattern/Pattern.vala',
+    'PatternType/Case/Camel.vala',
+    'PatternType/Case/Kebab.vala',
+    'PatternType/Case/Pascal.vala',
+    'PatternType/Case/Sentence.vala',
+    'PatternType/Case/Snake.vala',
+    'PatternType/Case/SpaceSeparated.vala',
+    'PatternType/Pattern.vala',
     'Case.vala',
     'Converter.vala',
 )

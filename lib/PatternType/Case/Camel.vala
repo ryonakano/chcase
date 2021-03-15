@@ -15,34 +15,36 @@
 * License along with this library. If not, see <https://www.gnu.org/licenses/>.
 */
 
-namespace ChCase.RegexPattern {
-    public class SpaceSeparated : Pattern {
-        public SpaceSeparated (Case result_case) {
+namespace ChCase.PatternType {
+    public class Camel : Pattern {
+        public Camel (Case result_case) {
             base (result_case);
         }
 
         public override void set_regex (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns) {
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
-                    // The chosen result case is the same with source case, does nothing.
+                    patterns.append_val ("(\\S)([A-Z])");
+                    replace_patterns.append_val ("\\1 \\2");
                     break;
                 case Case.CAMEL:
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("\\u\\1");
+                    // The chosen result case is the same with source case, does nothing.
                     break;
                 case Case.PASCAL:
-                    patterns.append_val ("( |^)(.)");
-                    replace_patterns.append_val ("\\u\\2");
+                    patterns.append_val ("^([a-z])");
+                    replace_patterns.append_val ("\\u\\1");
                     break;
                 case Case.SNAKE:
-                    patterns.append_val (" (.)");
-                    replace_patterns.append_val ("_\\1");
+                    patterns.append_val ("([A-Z])");
+                    replace_patterns.append_val ("_\\l\\1");
                     break;
                 case Case.KEBAB:
-                    patterns.append_val ("( )(.)");
-                    replace_patterns.append_val ("-\\2");
+                    patterns.append_val ("([A-Z])");
+                    replace_patterns.append_val ("-\\l\\1");
                     break;
                 case Case.SENTENCE:
+                    patterns.append_val ("([A-Z])");
+                    replace_patterns.append_val (" \\l\\1");
                     patterns.append_val ("^(.)");
                     replace_patterns.append_val ("\\u\\1");
                     break;

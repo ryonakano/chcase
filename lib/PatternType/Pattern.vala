@@ -15,7 +15,7 @@
 * License along with this library. If not, see <https://www.gnu.org/licenses/>.
 */
 
-namespace ChCase.RegexPattern {
+namespace ChCase.PatternType {
 
     /**
     * An abstract class for each case.
