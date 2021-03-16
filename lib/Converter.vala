@@ -256,9 +256,6 @@ namespace ChCase {
          * @return Result text after conversion
          */
         public string convert_case (owned string text) {
-            var patterns = new GLib.Array<string> ();
-            var replace_patterns = new GLib.Array<string> ();
-
             PatternType.Pattern regex_pattern;
             switch (source_case) {
                 case Case.SPACE_SEPARATED:
@@ -283,14 +280,12 @@ namespace ChCase {
                     assert_not_reached ();
             }
 
-            regex_pattern.set_regex (ref patterns, ref replace_patterns);
-
             MatchInfo match_info;
             try {
-                for (int i = 0; i < patterns.length; i++) {
-                    var regex = new Regex (patterns.index (i));
+                for (int i = 0; i < regex_pattern.patterns.length; i++) {
+                    var regex = new Regex (regex_pattern.patterns.index (i));
                     for (regex.match (text, 0, out match_info); match_info.matches (); match_info.next ()) {
-                        text = regex.replace (text, text.length, 0, replace_patterns.index (i));
+                        text = regex.replace (text, text.length, 0, regex_pattern.replace_patterns.index (i));
                     }
                 }
             } catch (RegexError e) {

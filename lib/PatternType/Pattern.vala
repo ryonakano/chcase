@@ -25,17 +25,80 @@ namespace ChCase.PatternType {
     * @since 2.1.0
     */
     protected abstract class Pattern : GLib.Object {
-        protected Case result_case;
+        public GLib.Array<string> patterns { get; construct; }
+        public GLib.Array<string> replace_patterns { get; construct; }
 
         protected Pattern (Case result_case) {
-            this.result_case = result_case;
+            Object (
+                patterns: new GLib.Array<string> (),
+                replace_patterns: new GLib.Array<string> ()
+            );
+
+            switch (result_case) {
+                case Case.SPACE_SEPARATED:
+                    to_space_separated ();
+                    break;
+                case Case.CAMEL:
+                    to_camel ();
+                    break;
+                case Case.PASCAL:
+                    to_pascal ();
+                    break;
+                case Case.SNAKE:
+                    to_snake ();
+                    break;
+                case Case.KEBAB:
+                    to_kebab ();
+                    break;
+                case Case.SENTENCE:
+                    to_sentence ();
+                    break;
+                default:
+                    warning ("Unexpected case, does nothing.");
+                    break;
+            }
         }
 
         /**
-         * Set regex patterns―one is to detect the source case and another is to detect the result case.
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
          * 
          * @since 2.1.0
          */
-        public abstract void set_regex (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns);
+        protected abstract void to_space_separated ();
+
+        /**
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
+        protected abstract void to_camel ();
+
+        /**
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
+        protected abstract void to_pascal ();
+
+        /**
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
+        protected abstract void to_snake ();
+
+        /**
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
+        protected abstract void to_kebab ();
+
+        /**
+         * Set regex patterns; one is to detect the source case and another is to detect the result case.
+         * 
+         * @since 2.1.0
+         */
+        protected abstract void to_sentence ();
     }
 }

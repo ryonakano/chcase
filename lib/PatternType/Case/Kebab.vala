@@ -21,37 +21,35 @@ namespace ChCase.PatternType {
             base (result_case);
         }
 
-        public override void set_regex (ref GLib.Array<string> patterns, ref GLib.Array<string> replace_patterns) {
-            switch (result_case) {
-                case Case.SPACE_SEPARATED:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                case Case.CAMEL:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    break;
-                case Case.PASCAL:
-                    patterns.append_val ("(-|^)(.)");
-                    replace_patterns.append_val ("\\u\\2");
-                    break;
-                case Case.SNAKE:
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val ("_\\1");
-                    break;
-                case Case.KEBAB:
-                    // The chosen result case is the same with source case, does nothing.
-                    break;
-                case Case.SENTENCE:
-                    patterns.append_val ("^(.)");
-                    replace_patterns.append_val ("\\u\\1");
-                    patterns.append_val ("-(.)");
-                    replace_patterns.append_val (" \\1");
-                    break;
-                default:
-                    warning ("Unexpected case, does nothing.");
-                    break;
-            }
+        protected override void to_space_separated () {
+            patterns.append_val ("-(.)");
+            replace_patterns.append_val (" \\1");
+        }
+
+        protected override void to_camel () {
+            patterns.append_val ("-(.)");
+            replace_patterns.append_val ("\\u\\1");
+        }
+
+        protected override void to_pascal () {
+            patterns.append_val ("(-|^)(.)");
+            replace_patterns.append_val ("\\u\\2");
+        }
+
+        protected override void to_snake () {
+            patterns.append_val ("-(.)");
+            replace_patterns.append_val ("_\\1");
+        }
+
+        protected override void to_kebab () {
+            // The chosen result case is the same with source case, does nothing.
+        }
+
+        protected override void to_sentence () {
+            patterns.append_val ("^(.)");
+            replace_patterns.append_val ("\\u\\1");
+            patterns.append_val ("-(.)");
+            replace_patterns.append_val (" \\1");
         }
     }
 }
