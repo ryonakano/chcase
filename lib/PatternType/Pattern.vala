@@ -25,12 +25,24 @@ namespace ChCase.PatternType {
     * @since 2.1.0
     */
     protected abstract class Pattern : GLib.Object {
-        public GLib.Array<string> patterns { get; construct; }
+
+        /**
+         * Regex patterns to detect the source case.
+         * 
+         * @since 2.1.0
+         */
+        public GLib.Array<string> detect_patterns { get; construct; }
+
+        /**
+         * Regex patterns to detect the result case.
+         * 
+         * @since 2.1.0
+         */
         public GLib.Array<string> replace_patterns { get; construct; }
 
         protected Pattern (Case result_case) {
             Object (
-                patterns: new GLib.Array<string> (),
+                detect_patterns: new GLib.Array<string> (),
                 replace_patterns: new GLib.Array<string> ()
             );
 

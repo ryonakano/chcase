@@ -22,22 +22,22 @@ namespace ChCase.PatternType {
         }
 
         protected override void to_space_separated () {
-            patterns.append_val ("-(.)");
+            detect_patterns.append_val ("-(.)");
             replace_patterns.append_val (" \\1");
         }
 
         protected override void to_camel () {
-            patterns.append_val ("-(.)");
+            detect_patterns.append_val ("-(.)");
             replace_patterns.append_val ("\\u\\1");
         }
 
         protected override void to_pascal () {
-            patterns.append_val ("(-|^)(.)");
+            detect_patterns.append_val ("(-|^)(.)");
             replace_patterns.append_val ("\\u\\2");
         }
 
         protected override void to_snake () {
-            patterns.append_val ("-(.)");
+            detect_patterns.append_val ("-(.)");
             replace_patterns.append_val ("_\\1");
         }
 
@@ -46,9 +46,9 @@ namespace ChCase.PatternType {
         }
 
         protected override void to_sentence () {
-            patterns.append_val ("^(.)");
+            detect_patterns.append_val ("^(.)");
             replace_patterns.append_val ("\\u\\1");
-            patterns.append_val ("-(.)");
+            detect_patterns.append_val ("-(.)");
             replace_patterns.append_val (" \\1");
         }
     }

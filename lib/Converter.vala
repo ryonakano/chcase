@@ -282,8 +282,8 @@ namespace ChCase {
 
             MatchInfo match_info;
             try {
-                for (int i = 0; i < regex_pattern.patterns.length; i++) {
-                    var regex = new Regex (regex_pattern.patterns.index (i));
+                for (int i = 0; i < regex_pattern.detect_patterns.length; i++) {
+                    var regex = new Regex (regex_pattern.detect_patterns.index (i));
                     for (regex.match (text, 0, out match_info); match_info.matches (); match_info.next ()) {
                         text = regex.replace (text, text.length, 0, regex_pattern.replace_patterns.index (i));
                     }

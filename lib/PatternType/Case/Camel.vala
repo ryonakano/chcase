@@ -22,7 +22,7 @@ namespace ChCase.PatternType {
         }
 
         protected override void to_space_separated () {
-            patterns.append_val ("(\\S)([A-Z])");
+            detect_patterns.append_val ("(\\S)([A-Z])");
             replace_patterns.append_val ("\\1 \\2");
         }
 
@@ -31,24 +31,24 @@ namespace ChCase.PatternType {
         }
 
         protected override void to_pascal () {
-            patterns.append_val ("^([a-z])");
+            detect_patterns.append_val ("^([a-z])");
             replace_patterns.append_val ("\\u\\1");
         }
 
         protected override void to_snake () {
-            patterns.append_val ("([A-Z])");
+            detect_patterns.append_val ("([A-Z])");
             replace_patterns.append_val ("_\\l\\1");
         }
 
         protected override void to_kebab () {
-            patterns.append_val ("([A-Z])");
+            detect_patterns.append_val ("([A-Z])");
             replace_patterns.append_val ("-\\l\\1");
         }
 
         protected override void to_sentence () {
-            patterns.append_val ("([A-Z])");
+            detect_patterns.append_val ("([A-Z])");
             replace_patterns.append_val (" \\l\\1");
-            patterns.append_val ("^(.)");
+            detect_patterns.append_val ("^(.)");
             replace_patterns.append_val ("\\u\\1");
         }
     }
