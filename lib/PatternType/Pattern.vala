@@ -41,11 +41,6 @@ namespace ChCase.PatternType {
         public GLib.Array<string> replace_patterns { get; construct; }
 
         protected Pattern (Case result_case) {
-            Object (
-                detect_patterns: new GLib.Array<string> (),
-                replace_patterns: new GLib.Array<string> ()
-            );
-
             switch (result_case) {
                 case Case.SPACE_SEPARATED:
                     to_space_separated ();
@@ -69,6 +64,11 @@ namespace ChCase.PatternType {
                     warning ("Unexpected case, does nothing.");
                     break;
             }
+        }
+
+        construct {
+            detect_patterns = new GLib.Array<string> ();
+            replace_patterns = new GLib.Array<string> ();
         }
 
         /**

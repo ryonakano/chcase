@@ -16,6 +16,7 @@
 */
 
 namespace ChCase {
+
     /**
      * Represents the case of a text.
      */
