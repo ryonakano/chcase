@@ -1,11 +1,11 @@
 sources = files(
-    'PatternType/Case/Camel.vala',
-    'PatternType/Case/Kebab.vala',
-    'PatternType/Case/Pascal.vala',
-    'PatternType/Case/Sentence.vala',
-    'PatternType/Case/Snake.vala',
-    'PatternType/Case/SpaceSeparated.vala',
-    'PatternType/Pattern.vala',
+    'PatternType' / 'Case' / 'Camel.vala',
+    'PatternType' / 'Case' / 'Kebab.vala',
+    'PatternType' / 'Case' / 'Pascal.vala',
+    'PatternType' / 'Case' / 'Sentence.vala',
+    'PatternType' / 'Case' / 'Snake.vala',
+    'PatternType' / 'Case' / 'SpaceSeparated.vala',
+    'PatternType' / 'Pattern.vala',
     'Case.vala',
     'Converter.vala',
 )
@@ -21,7 +21,7 @@ chcase_lib = library(
 
 install_data(
     'chcase.deps',
-    install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
+    install_dir: get_option('datadir') / 'vala' / 'vapi'
 )
 
 libchcase = declare_dependency(
