@@ -4,6 +4,37 @@ ChCase is a small library to convert case of a given string between camelCase, P
 This is my first attempt to create a library (yet small and straightforward though).
 
 ## Usage
+### 1. Declare as a Dependency
+#### For Flatpak Apps
+If you want to use this library in a *flatpaked* app, simply call it as a module:
+
+```yaml
+modules:
+  - name: chcase
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/ryonakano/chcase.git
+        tag: '2.1.0'
+```
+
+Then call `chcase` in your meson file:
+
+```meson
+executable(
+    meson.project_name(),
+    'src/Application.vala',
+    dependencies: [
+        dependency('gtk+-3.0'),
+        dependency('chcase')
+    ],
+    install: true
+)
+```
+
+Now you can use the library in your project.
+
+#### For Other Packages (e.g. Debian Packaging)
 This library is not (yet) provided as a package for any distributions, so the best way to use it to your project is to embed it as a git submodule:
 
     git submodule add https://github.com/ryonakano/chcase subprojects/chcase
@@ -29,7 +60,9 @@ executable(
 )
 ```
 
-Now you can use chcase in your project.
+Now you can use the library in your project.
+
+### 2. Start Coding
 
 Set the case for input string and result string and then perform conversion.
 
@@ -41,6 +74,8 @@ stdout.printf ("Input: %s / Output: %s\n", input_text, output_text);
 // Result
 // Input: say hello to ChCase / Output: sayHelloToChCase
 ```
+
+There is [an example code](examples/Application.vala) prepared in this repository, so it may help you.
 
 ## Building and Installation
 If you mean to perform code changes and create a pull request against this project, you may want to build and install the library from source code.
