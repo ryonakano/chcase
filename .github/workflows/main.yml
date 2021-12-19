@@ -11,7 +11,7 @@ jobs:
       image: elementary/docker:unstable
     
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build
       env:
         DESTDIR: out
@@ -28,6 +28,6 @@ jobs:
       image: valalang/lint
       
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Lint
       run: io.elementary.vala-lint -d .
