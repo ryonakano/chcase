@@ -37,7 +37,9 @@ Now you can use the library in your project.
 #### For Other Packages (e.g. Debian Packaging)
 This library is not (yet) provided as a package for any distributions, so the best way to use it to your project is to embed it as a git submodule:
 
-    git submodule add https://github.com/ryonakano/chcase subprojects/chcase
+```bash
+git submodule add https://github.com/ryonakano/chcase subprojects/chcase
+```
 
 Load the embeded chcase library as a dependency in the root `meson.build`:
 
@@ -86,16 +88,21 @@ You'll need the following dependencies:
 * meson (>= 0.49.0)
 * valac
 
-Run `meson build` to configure the build environment. Change to the build directory and run `ninja` to build
+Run `meson setup` to configure the build environment and run `ninja` to build
 
-    meson build --prefix=/usr
-    cd build
-    ninja
+```bash
+meson setup builddir --prefix=/usr
+ninja -C builddir
+```
 
 To install, use `ninja install`
 
-    ninja install
+```bash
+ninja install -C builddir
+```
 
 To see a demo app, run:
 
-    ./build/examples/example
+```bash
+./build/examples/example
+```
