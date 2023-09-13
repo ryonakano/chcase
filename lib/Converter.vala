@@ -113,7 +113,7 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text.
          * 
-         * @param targ_case Expected case as representing input text
+         * @param src_case Expected case as representing input text
          * @since 1.1.0
          */
         [CCode (cname = "_set_source_case")]
