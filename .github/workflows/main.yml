@@ -11,14 +11,14 @@ jobs:
       image: elementary/docker:stable
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build
       env:
         DESTDIR: out
       run: |
-        meson build
-        ninja -C build
-        ninja -C build install
+        meson setup builddir
+        ninja -C builddir
+        ninja -C builddir install
 
   lint:
 
@@ -28,6 +28,6 @@ jobs:
       image: valalang/lint
       
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Lint
       run: io.elementary.vala-lint -d .
