@@ -85,7 +85,7 @@ If you mean to perform code changes and create a pull request against this proje
 You'll need the following dependencies:
 
 * libglib2.0-dev
-* meson (>= 0.49.0)
+* meson (>= 0.56.0)
 * valac
 
 Run `meson setup` to configure the build environment and run `ninja` to build
