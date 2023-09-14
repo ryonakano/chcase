@@ -15,3 +15,26 @@ libchcase_deps = [
 
 subdir('lib')
 subdir('examples')
+
+if get_option('doc')
+    doc_outdir = 'docs'
+    valadoc = find_program('valadoc')
+
+    custom_target(
+        'valadoc',
+        command: [
+            valadoc,
+            sources,
+            '--package-name=' + meson.project_name(),
+            '--package-version=' + meson.project_version(),
+            '--verbose',
+            '--force',
+            '--use-svg-images',
+            '-o', meson.project_source_root() / doc_outdir,
+        ],
+
+        build_by_default: true,
+        output: doc_outdir,
+        depends: chcase_lib
+    )
+endif
