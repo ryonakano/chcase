@@ -1,1 +1,1 @@
-option('doc', type: 'boolean', value: 'false', description: 'Whether to generate valadoc')
+option('doc', type: 'boolean', value: false, description: 'Whether to generate valadoc')
