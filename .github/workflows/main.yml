@@ -20,7 +20,7 @@ jobs:
       env:
         DESTDIR: out
       run: |
-        meson setup builddir
+        meson setup builddir --prefix=/usr
         ninja -C builddir
         ninja -C builddir install
 
