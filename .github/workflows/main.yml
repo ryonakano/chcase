@@ -13,6 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install Dependencies
+      env:
+        DEBIAN_FRONTEND: noninteractive
       run: |
         apt update
         apt install -y libglib2.0-dev meson valac
