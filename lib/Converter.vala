@@ -266,7 +266,8 @@ namespace ChCase {
                     regex_pattern = new PatternType.Sentence (result_case);
                     break;
                 default:
-                    assert_not_reached ();
+                    warning ("Invalid Case: %d", source_case);
+                    return result;
             }
 
             try {

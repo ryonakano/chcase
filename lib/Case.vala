@@ -59,7 +59,8 @@ namespace ChCase {
                 case Case.SENTENCE:
                     return "sentence";
                 default:
-                    assert_not_reached ();
+                    warning ("Invalid Case: %d", this);
+                    return "";
             }
         }
     }
