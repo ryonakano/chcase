@@ -243,7 +243,8 @@ namespace ChCase {
          * @param text Text to be converted
          * @return Result text after conversion
          */
-        public string convert_case (owned string text) {
+        public string convert_case (string text) {
+            string result = text;
             PatternType.Pattern regex_pattern;
             switch (source_case) {
                 case Case.SPACE_SEPARATED:
@@ -273,14 +274,14 @@ namespace ChCase {
                 for (int i = 0; i < regex_pattern.detect_patterns.length; i++) {
                     var regex = new Regex (regex_pattern.detect_patterns.index (i));
                     for (regex.match (text, 0, out match_info); match_info.matches (); match_info.next ()) {
-                        text = regex.replace (text, text.length, 0, regex_pattern.replace_patterns.index (i));
+                        result = regex.replace (text, text.length, 0, regex_pattern.replace_patterns.index (i));
                     }
                 }
             } catch (RegexError e) {
                 warning (e.message);
             }
 
-            return text;
+            return result;
         }
     }
 }
