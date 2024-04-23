@@ -1,1 +1,2 @@
 option('doc', type: 'boolean', value: false, description: 'Whether to generate valadoc')
+option('demo', type: 'boolean', value: false, description: 'Whether to build demo app')

@@ -101,8 +101,10 @@ To install, use `ninja install`
 ninja install -C builddir
 ```
 
-To see a demo app, run:
+You can optionally build and run a demo app:
 
 ```bash
-./build/examples/example
+meson configure builddir -Ddemo=true
+ninja -C builddir
+./builddir/examples/example
 ```
