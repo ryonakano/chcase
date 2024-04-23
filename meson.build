@@ -14,7 +14,10 @@ libchcase_deps = [
 ]
 
 subdir('lib')
-subdir('examples')
+
+if get_option('demo')
+    subdir('examples')
+endif
 
 if get_option('doc')
     doc_outdir = 'docs'
