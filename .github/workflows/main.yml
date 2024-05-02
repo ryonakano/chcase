@@ -21,8 +21,8 @@ jobs:
         DESTDIR: out
       run: |
         meson setup builddir --prefix=/usr -Ddemo=true
-        ninja -C builddir
-        ninja -C builddir install
+        meson compile -C builddir
+        meson install -C builddir
 
   lint:
 

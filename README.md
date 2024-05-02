@@ -88,23 +88,23 @@ You'll need the following dependencies:
 * meson (>= 0.56.0)
 * valac
 
-Run `meson setup` to configure the build environment and run `ninja` to build
+Run `meson setup` to configure the build environment and run `meson compile` to build:
 
 ```bash
 meson setup builddir --prefix=/usr
-ninja -C builddir
+meson compile -C builddir
 ```
 
-To install, use `ninja install`
+To install, use `meson install`:
 
 ```bash
-ninja install -C builddir
+meson install -C builddir
 ```
 
 You can optionally build and run a demo app:
 
 ```bash
 meson configure builddir -Ddemo=true
-ninja -C builddir
+meson compile -C builddir
 ./builddir/examples/example
 ```
