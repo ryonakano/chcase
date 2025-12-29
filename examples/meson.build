@@ -1,10 +1,10 @@
 example_sources = files(
-    'Application.vala'
+  'Application.vala',
 )
 
 executable(
-    'example',
-    example_sources,
-    dependencies: libchcase,
-    install: false
+  'example',
+  example_sources,
+  dependencies: libchcase,
+  install: false,
 )
