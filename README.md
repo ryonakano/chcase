@@ -22,13 +22,13 @@ Then call `chcase` in your meson file:
 
 ```meson
 executable(
-    meson.project_name(),
-    'src/Application.vala',
-    dependencies: [
-        dependency('gtk+-3.0'),
-        dependency('chcase')
-    ],
-    install: true
+  meson.project_name(),
+  'src/Application.vala',
+  dependencies: [
+    dependency('gtk+-3.0'),
+    dependency('chcase'),
+  ],
+  install: true,
 )
 ```
 
@@ -52,13 +52,13 @@ Add the loaded `chcase_deps` in the dependencies list in `meson.build` that has 
 
 ```meson
 executable(
-    meson.project_name(),
-    'src/Application.vala',
-    dependencies: [
-        dependency('gtk+-3.0'),
-        chcase_deps,
-    ],
-    install: true
+  meson.project_name(),
+  'src/Application.vala',
+  dependencies: [
+    dependency('gtk+-3.0'),
+    chcase_deps,
+  ],
+  install: true,
 )
 ```
 
