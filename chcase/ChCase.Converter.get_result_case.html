@@ -27,31 +27,48 @@
         </ul>
         <hr class="navi_hr"/>
         <ul class="navi_main">
-          <li class="property"><a href="ChCase.Converter.result_case.html">result_case</a></li>
-          <li class="property"><a href="ChCase.Converter.result_case_name.html">result_case_name</a></li>
-          <li class="property"><a href="ChCase.Converter.source_case.html">source_case</a></li>
-          <li class="property"><a href="ChCase.Converter.source_case_name.html">source_case_name</a></li>
+          <li class="property"><a href="ChCase.Converter.input_case.html">input_case</a></li>
+          <li class="property"><a href="ChCase.Converter.input_case_name.html">input_case_name</a></li>
+          <li class="property"><a href="ChCase.Converter.output_case.html">output_case</a></li>
+          <li class="property"><a href="ChCase.Converter.output_case_name.html">output_case_name</a></li>
+          <li class="property"><span class="deprecated"><a href="ChCase.Converter.result_case.html">result_case</a></span></li>
+          <li class="property"><span class="deprecated"><a href="ChCase.Converter.result_case_name.html">result_case_name</a></span></li>
+          <li class="property"><span class="deprecated"><a href="ChCase.Converter.source_case.html">source_case</a></span></li>
+          <li class="property"><span class="deprecated"><a href="ChCase.Converter.source_case_name.html">source_case_name</a></span></li>
           <li class="creation_method"><a href="ChCase.Converter.Converter.html">Converter</a></li>
           <li class="creation_method"><a href="ChCase.Converter.Converter.with_case.html">Converter.with_case</a></li>
           <li class="creation_method"><a href="ChCase.Converter.Converter.with_case_from_string.html">Converter.with_case_from_string</a></li>
           <li class="method"><a href="ChCase.Converter.convert_case.html">convert_case</a></li>
-          <li class="method">get_result_case</li>
-          <li class="method"><a href="ChCase.Converter.get_result_case_from_string.html">get_result_case_from_string</a></li>
-          <li class="method"><a href="ChCase.Converter.get_source_case.html">get_source_case</a></li>
-          <li class="method"><a href="ChCase.Converter.get_source_case_from_string.html">get_source_case_from_string</a></li>
-          <li class="method"><a href="ChCase.Converter.set_result_case.html">set_result_case</a></li>
-          <li class="method"><a href="ChCase.Converter.set_result_case_from_string.html">set_result_case_from_string</a></li>
-          <li class="method"><a href="ChCase.Converter.set_source_case.html">set_source_case</a></li>
-          <li class="method"><a href="ChCase.Converter.set_source_case_from_string.html">set_source_case_from_string</a></li>
+          <li class="method"><a href="ChCase.Converter.get_input_case.html">get_input_case</a></li>
+          <li class="method"><a href="ChCase.Converter.get_input_case_from_string.html">get_input_case_from_string</a></li>
+          <li class="method"><a href="ChCase.Converter.get_output_case.html">get_output_case</a></li>
+          <li class="method"><a href="ChCase.Converter.get_output_case_from_string.html">get_output_case_from_string</a></li>
+          <li class="method"><span class="deprecated">get_result_case</span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.get_result_case_from_string.html">get_result_case_from_string</a>
+            </span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.get_source_case.html">get_source_case</a></span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.get_source_case_from_string.html">get_source_case_from_string</a>
+            </span></li>
+          <li class="method"><a href="ChCase.Converter.set_input_case.html">set_input_case</a></li>
+          <li class="method"><a href="ChCase.Converter.set_input_case_from_string.html">set_input_case_from_string</a></li>
+          <li class="method"><a href="ChCase.Converter.set_output_case.html">set_output_case</a></li>
+          <li class="method"><a href="ChCase.Converter.set_output_case_from_string.html">set_output_case_from_string</a></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.set_result_case.html">set_result_case</a></span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.set_result_case_from_string.html">set_result_case_from_string</a>
+            </span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.set_source_case.html">set_source_case</a></span></li>
+          <li class="method"><span class="deprecated"><a href="ChCase.Converter.set_source_case_from_string.html">set_source_case_from_string</a>
+            </span></li>
         </ul>
       </div>
       <div class="site_content">
         <h1 class="main_title">get_result_case</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition">[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"_get_result_case"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_type"><a href="ChCase.Case.html" class="enum">Case</a></span> <b><span class="method">get_result_case</span></b> ()
+        <div class="main_code_definition">[ <span class="main_type">Version</span> ( deprecated = <span class="main_literal">true</span> ,  deprecated_since = <span class="main_literal">"2.4.0"</span> ,  replacement = <span class="main_literal">"ChCase.Converter.get_output_case"</span> ) ]<br/>[ <span class="main_type">CCode</span> ( cname = <span class="main_literal">"_get_result_case"</span> ) ]<br/><span class="main_keyword">public</span> <span class="main_type"><a href="ChCase.Case.html" class="enum">Case</a></span> <b><span class="method">get_result_case</span></b> ()
         </div>
         <div class="description">
+          <p><b>Warning:</b> get_result_case is deprecated since 2.4.0. Use ChCase.Converter.get_output_case.</p>
           <p>Get currently specified case for output text.</p>
           <h2 class="main_title">Returns:</h2>
           <table class="main_parameter_table">
