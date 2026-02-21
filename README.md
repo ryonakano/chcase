@@ -3,6 +3,10 @@ ChCase is a small library to convert case of a given string between camelCase, P
 
 This is my first attempt to create a library (yet small and straightforward though).
 
+[API Reference](https://ryonakano.github.io/chcase/chcase)
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/chcase.svg)](https://repology.org/project/chcase/versions)
+
 ## Usage
 ### 1. Declare as Dependency
 - [Recommended: Use as git submodule](#use-as-git-submodule]
