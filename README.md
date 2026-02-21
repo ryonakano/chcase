@@ -4,38 +4,12 @@ ChCase is a small library to convert case of a given string between camelCase, P
 This is my first attempt to create a library (yet small and straightforward though).
 
 ## Usage
-### 1. Declare as a Dependency
-#### For Flatpak Apps
-If you want to use this library in a *flatpaked* app, simply call it as a module:
+### 1. Declare as Dependency
+- [Recommended: Use as git submodule](#use-as-git-submodule]
+- [Flatpak: Use as submodule](#flatpak:-use-as-a-submodule]
 
-```yaml
-modules:
-  - name: chcase
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/ryonakano/chcase.git
-        tag: '2.1.0'
-```
-
-Then call `chcase` in your meson file:
-
-```meson
-executable(
-  meson.project_name(),
-  'src/Application.vala',
-  dependencies: [
-    dependency('gtk+-3.0'),
-    dependency('chcase'),
-  ],
-  install: true,
-)
-```
-
-Now you can use the library in your project.
-
-#### For Other Packages (e.g. Debian Packaging)
-This library is not (yet) provided as a package for any distributions, so the best way to use it to your project is to embed it as a git submodule:
+#### Recommended: Use as git submodule
+The best way to use this library in your project is to embed it as a git submodule:
 
 ```bash
 git submodule add https://github.com/ryonakano/chcase subprojects/chcase
@@ -57,6 +31,35 @@ executable(
   dependencies: [
     dependency('gtk+-3.0'),
     chcase_deps,
+  ],
+  install: true,
+)
+```
+
+Now you can use the library in your project.
+
+#### Flatpak: Use as Submodule
+If you want to use this library in an app packaged using Flatpak, simply call it as a module:
+
+```yaml
+modules:
+  - name: chcase
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/ryonakano/chcase.git
+        tag: '2.1.0'
+```
+
+Then call `chcase` in your meson file:
+
+```meson
+executable(
+  meson.project_name(),
+  'src/Application.vala',
+  dependencies: [
+    dependency('gtk+-3.0'),
+    dependency('chcase'),
   ],
   install: true,
 )
