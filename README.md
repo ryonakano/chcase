@@ -9,9 +9,6 @@ This is my first attempt to create a library (yet small and straightforward thou
 
 ## Usage
 ### 1. Declare as Dependency
-- [Recommended: Use as git submodule](#use-as-git-submodule]
-- [Flatpak: Use as submodule](#flatpak:-use-as-a-submodule]
-
 #### Recommended: Use as git submodule
 The best way to use this library in your project is to embed it as a git submodule:
 
