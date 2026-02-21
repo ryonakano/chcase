@@ -22,8 +22,23 @@ namespace ChCase {
 
         /**
          * Currently specified and expected case as representing input text.
-         * 
+         *
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.input_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.input_case")]
+        public Case source_case {
+            get {
+                return input_case;
+            }
+            set {
+                input_case = value;
+            }
+        }
+        /**
+         * Currently specified and expected case as representing input text.
+         *
+         * @since 2.4.0
          */
         public Case input_case {
             get {
@@ -38,6 +53,22 @@ namespace ChCase {
 
         /**
          * Currently specified case for output text.
+         *
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.output_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.output_case")]
+        public Case result_case {
+            get {
+                return output_case;
+            }
+            set {
+                output_case = value;
+            }
+        }
+        /**
+         * Currently specified case for output text.
+         *
+         * @since 2.4.0
          */
         public Case output_case {
             get {
@@ -52,7 +83,22 @@ namespace ChCase {
 
         /**
          * Currently specified and expected case as representing input text, in string.
-         * 
+         *
+         * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.input_case_name} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.input_case_name")]
+        public string source_case_name {
+            get {
+                return input_case_name;
+            }
+            set {
+                input_case_name = value;
+            }
+        }
+        /**
+         * Currently specified and expected case as representing input text, in string.
+         *
          * @since 1.1.0
          */
         public string input_case_name {
@@ -69,6 +115,22 @@ namespace ChCase {
 
         /**
          * Currently specified case for output text, in string.
+         *
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.output_case_name} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.output_case_name")]
+        public string result_case_name {
+            get {
+                return output_case_name;
+            }
+            set {
+                output_case_name = value;
+            }
+        }
+        /**
+         * Currently specified case for output text, in string.
+         *
+         * @since 2.4.0
          */
         public string output_case_name {
             get {
@@ -90,52 +152,87 @@ namespace ChCase {
 
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases.
-         * 
-         * @param src_case Expected case as representing input text
-         * @param res_case Case for output text
+         *
+         * @param in_case Expected case as representing input text
+         * @param out_case Case for output text
          */
-        public Converter.with_case (Case src_case, Case res_case) {
-            input_case = src_case;
-            output_case = res_case;
+        public Converter.with_case (Case in_case, Case out_case) {
+            input_case = in_case;
+            output_case = out_case;
         }
 
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases in string.
-         * 
-         * @param src_case Expected case as representing input text, in string
-         * @param res_case Case for output text, in string
+         *
+         * @param in_case Expected case as representing input text, in string
+         * @param out_case Case for output text, in string
          */
-        public Converter.with_case_from_string (string src_case, string res_case) {
-            set_input_case_from_string (src_case);
-            set_output_case_from_string (res_case);
+        public Converter.with_case_from_string (string in_case, string out_case) {
+            set_input_case_from_string (in_case);
+            set_output_case_from_string (out_case);
         }
 
         /**
          * Set currently specified and expected case as representing input text.
-         * 
+         *
          * @param src_case Expected case as representing input text
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.set_input_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.set_input_case")]
+        [CCode (cname = "_set_source_case")]
+        public void set_source_case (Case src_case) {
+            set_input_case (src_case);
+        }
+        /**
+         * Set currently specified and expected case as representing input text.
+         *
+         * @param in_case Expected case as representing input text
+         * @since 2.4.0
          */
         [CCode (cname = "_set_input_case")]
-        public void set_input_case (Case src_case) {
-            input_case = src_case;
+        public void set_input_case (Case in_case) {
+            input_case = in_case;
         }
 
         /**
          * Set currently specified case for output text.
-         * 
+         *
          * @param res_case Case for output text
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.set_output_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.set_output_case")]
+        [CCode (cname = "_set_result_case")]
+        public void set_result_case (Case res_case) {
+            set_output_case (res_case);
+        }
+        /**
+         * Set currently specified case for output text.
+         *
+         * @param out_case Case for output text
          */
         [CCode (cname = "_set_output_case")]
-        public void set_output_case (Case res_case) {
-            output_case = res_case;
+        public void set_output_case (Case out_case) {
+            output_case = out_case;
         }
 
         /**
          * Get currently specified and expected case as representing input text.
-         * 
+         *
          * @return Expected case as representing input text
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.get_input_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.get_input_case")]
+        [CCode (cname = "_get_source_case")]
+        public Case get_source_case () {
+            return get_input_case ();
+        }
+        /**
+         * Get currently specified and expected case as representing input text.
+         *
+         * @return Expected case as representing input text
+         * @since 2.4.0
          */
         [CCode (cname = "_get_input_case")]
         public Case get_input_case () {
@@ -144,9 +241,21 @@ namespace ChCase {
 
         /**
          * Get currently specified case for output text.
-         * 
+         *
          * @return Case for output text
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.get_output_case} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.get_output_case")]
+        [CCode (cname = "_get_result_case")]
+        public Case get_result_case () {
+            return get_output_case ();
+        }
+        /**
+         * Get currently specified case for output text.
+         *
+         * @return Case for output text
+         * @since 2.4.0
          */
         [CCode (cname = "_get_output_case")]
         public Case get_output_case () {
@@ -155,13 +264,25 @@ namespace ChCase {
 
         /**
          * Set currently specified and expected case as representing input text, in string.
-         * 
+         *
          * @param src_case Expected case as representing input text
          * @return true if the case is one of {@link ChCase.Case}
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.set_input_case_from_string} instead.
          */
-        public bool set_input_case_from_string (string src_case) {
-            switch (src_case) {
+        [Version (deprecated = true, replacement = "ChCase.Converter.set_input_case_from_string")]
+        public bool set_source_case_from_string (string src_case) {
+            return set_input_case_from_string (src_case);
+        }
+        /**
+         * Set currently specified and expected case as representing input text, in string.
+         *
+         * @param in_case Expected case as representing input text
+         * @return true if the case is one of {@link ChCase.Case}
+         * @since 2.4.0
+         */
+        public bool set_input_case_from_string (string in_case) {
+            switch (in_case) {
                 case "space_separated":
                     input_case = Case.SPACE_SEPARATED;
                     return true;
@@ -188,11 +309,22 @@ namespace ChCase {
 
         /**
          * Set currently specified case for output text, in string.
-         * 
+         *
          * @return true if the case is one of {@link ChCase.Case}
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.set_output_case_from_string} instead.
          */
-        public bool set_output_case_from_string (string res_case) {
-            switch (res_case) {
+        [Version (deprecated = true, replacement = "ChCase.Converter.set_output_case_from_string")]
+        public bool set_result_case_from_string (string res_case) {
+            return set_output_case_from_string (res_case);
+        }
+        /**
+         * Set currently specified case for output text, in string.
+         *
+         * @return true if the case is one of {@link ChCase.Case}
+         * @since 2.4.0
+         */
+        public bool set_output_case_from_string (string out_case) {
+            switch (out_case) {
                 case "space_separated":
                     output_case = Case.SPACE_SEPARATED;
                     return true;
@@ -219,9 +351,20 @@ namespace ChCase {
 
         /**
          * Get currently specified and expected case as representing input text, in string.
-         * 
+         *
          * @return Expected case as representing input text
          * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.get_input_case_from_string} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.get_input_case_from_string")]
+        public string get_source_case_from_string () {
+            return get_input_case_from_string ();
+        }
+        /**
+         * Get currently specified and expected case as representing input text, in string.
+         *
+         * @return Expected case as representing input text
+         * @since 2.4.0
          */
         public string get_input_case_from_string () {
             return input_case_name;
@@ -229,7 +372,18 @@ namespace ChCase {
 
         /**
          * Get currently specified case for output text, in string.
-         * 
+         *
+         * @return Case for output text
+         * @since 1.1.0
+         * @deprecated 2.4.0    Use {@link ChCase.Converter.get_output_case_from_string} instead.
+         */
+        [Version (deprecated = true, replacement = "ChCase.Converter.get_output_case_from_string")]
+        public string get_result_case_from_string () {
+            return get_output_case_from_string ();
+        }
+        /**
+         * Get currently specified case for output text, in string.
+         *
          * @return Case for output text
          * @since 1.1.0
          */
@@ -239,7 +393,7 @@ namespace ChCase {
 
         /**
          * Perform case conversion.
-         * 
+         *
          * @param text Text to be converted
          * @return Result text after conversion
          */
