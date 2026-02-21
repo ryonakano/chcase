@@ -14,32 +14,32 @@ public class Application : GLib.Application {
         string test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change source case to PascalCase
-        converter.set_source_case (ChCase.Case.PASCAL);
+        // Change input case to PascalCase
+        converter.set_input_case (ChCase.Case.PASCAL);
         test_text_before = "ThisShouldBeConvertedToCamelCase";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change result case to snake_case
-        converter.result_case = ChCase.Case.SNAKE;
+        // Change output case to snake_case
+        converter.output_case = ChCase.Case.SNAKE;
         test_text_before = "thisShouldBeConvertedToSnakeCase";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change source case to kebab-case
-        converter.set_source_case_from_string ("kebab");
+        // Change input case to kebab-case
+        converter.set_input_case_from_string ("kebab");
         test_text_before = "this-should-be-converted-to-snake-case";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change result case to space-separated
-        converter.result_case_name = "space_separated";
+        // Change output case to space-separated
+        converter.output_case_name = "space_separated";
         test_text_before = "this-should-be-converted-to-space-separated";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);
 
-        // Change source case to Sentence case
-        converter.source_case = ChCase.Case.SENTENCE;
+        // Change input case to Sentence case
+        converter.input_case = ChCase.Case.SENTENCE;
         test_text_before = "This should be converted to space separated";
         test_text_after = converter.convert_case (test_text_before);
         stdout.printf ("%s -> %s\n", test_text_before, test_text_after);

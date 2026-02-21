@@ -28,8 +28,8 @@ namespace ChCase.PatternType {
          */
         public GLib.Array<string> replace_patterns { get; construct; }
 
-        protected Pattern (Case result_case) {
-            switch (result_case) {
+        protected Pattern (Case output_case) {
+            switch (output_case) {
                 case Case.SPACE_SEPARATED:
                     to_space_separated ();
                     break;

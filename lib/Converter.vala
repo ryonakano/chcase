@@ -25,62 +25,62 @@ namespace ChCase {
          * 
          * @since 1.1.0
          */
-        public Case source_case {
+        public Case input_case {
             get {
-                return _source_case;
+                return _input_case;
             }
             set {
-                _source_case = value;
-                _source_case_name = value.to_string ();
+                _input_case = value;
+                _input_case_name = value.to_string ();
             }
         }
-        private Case _source_case;
+        private Case _input_case;
 
         /**
          * Currently specified case for output text.
          */
-        public Case result_case {
+        public Case output_case {
             get {
-                return _result_case;
+                return _output_case;
             }
             set {
-                _result_case = value;
-                _result_case_name = value.to_string ();
+                _output_case = value;
+                _output_case_name = value.to_string ();
             }
         }
-        private Case _result_case;
+        private Case _output_case;
 
         /**
          * Currently specified and expected case as representing input text, in string.
          * 
          * @since 1.1.0
          */
-        public string source_case_name {
+        public string input_case_name {
             get {
-                return _source_case_name;
+                return _input_case_name;
             }
             set {
-                if (set_source_case_from_string (value)) {
-                    _source_case_name = value;
+                if (set_input_case_from_string (value)) {
+                    _input_case_name = value;
                 }
             }
         }
-        private string _source_case_name;
+        private string _input_case_name;
 
         /**
          * Currently specified case for output text, in string.
          */
-        public string result_case_name {
+        public string output_case_name {
             get {
-                return _result_case_name;
+                return _output_case_name;
             }
             set {
-                if (set_result_case_from_string (value)) {
-                    _result_case_name = value;
+                if (set_output_case_from_string (value)) {
+                    _output_case_name = value;
                 }
             }
         }
-        private string _result_case_name;
+        private string _output_case_name;
 
         /**
          * Creates a new {@link ChCase.Converter} object with no specified cases.
@@ -95,8 +95,8 @@ namespace ChCase {
          * @param res_case Case for output text
          */
         public Converter.with_case (Case src_case, Case res_case) {
-            source_case = src_case;
-            result_case = res_case;
+            input_case = src_case;
+            output_case = res_case;
         }
 
         /**
@@ -106,8 +106,8 @@ namespace ChCase {
          * @param res_case Case for output text, in string
          */
         public Converter.with_case_from_string (string src_case, string res_case) {
-            set_source_case_from_string (src_case);
-            set_result_case_from_string (res_case);
+            set_input_case_from_string (src_case);
+            set_output_case_from_string (res_case);
         }
 
         /**
@@ -116,9 +116,9 @@ namespace ChCase {
          * @param src_case Expected case as representing input text
          * @since 1.1.0
          */
-        [CCode (cname = "_set_source_case")]
-        public void set_source_case (Case src_case) {
-            source_case = src_case;
+        [CCode (cname = "_set_input_case")]
+        public void set_input_case (Case src_case) {
+            input_case = src_case;
         }
 
         /**
@@ -126,9 +126,9 @@ namespace ChCase {
          * 
          * @param res_case Case for output text
          */
-        [CCode (cname = "_set_result_case")]
-        public void set_result_case (Case res_case) {
-            result_case = res_case;
+        [CCode (cname = "_set_output_case")]
+        public void set_output_case (Case res_case) {
+            output_case = res_case;
         }
 
         /**
@@ -137,9 +137,9 @@ namespace ChCase {
          * @return Expected case as representing input text
          * @since 1.1.0
          */
-        [CCode (cname = "_get_source_case")]
-        public Case get_source_case () {
-            return source_case;
+        [CCode (cname = "_get_input_case")]
+        public Case get_input_case () {
+            return input_case;
         }
 
         /**
@@ -148,9 +148,9 @@ namespace ChCase {
          * @return Case for output text
          * @since 1.1.0
          */
-        [CCode (cname = "_get_result_case")]
-        public Case get_result_case () {
-            return result_case;
+        [CCode (cname = "_get_output_case")]
+        public Case get_output_case () {
+            return output_case;
         }
 
         /**
@@ -160,25 +160,25 @@ namespace ChCase {
          * @return true if the case is one of {@link ChCase.Case}
          * @since 1.1.0
          */
-        public bool set_source_case_from_string (string src_case) {
+        public bool set_input_case_from_string (string src_case) {
             switch (src_case) {
                 case "space_separated":
-                    source_case = Case.SPACE_SEPARATED;
+                    input_case = Case.SPACE_SEPARATED;
                     return true;
                 case "camel":
-                    source_case = Case.CAMEL;
+                    input_case = Case.CAMEL;
                     return true;
                 case "pascal":
-                    source_case = Case.PASCAL;
+                    input_case = Case.PASCAL;
                     return true;
                 case "snake":
-                    source_case = Case.SNAKE;
+                    input_case = Case.SNAKE;
                     return true;
                 case "kebab":
-                    source_case = Case.KEBAB;
+                    input_case = Case.KEBAB;
                     return true;
                 case "sentence":
-                    source_case = Case.SENTENCE;
+                    input_case = Case.SENTENCE;
                     return true;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -191,25 +191,25 @@ namespace ChCase {
          * 
          * @return true if the case is one of {@link ChCase.Case}
          */
-        public bool set_result_case_from_string (string res_case) {
+        public bool set_output_case_from_string (string res_case) {
             switch (res_case) {
                 case "space_separated":
-                    result_case = Case.SPACE_SEPARATED;
+                    output_case = Case.SPACE_SEPARATED;
                     return true;
                 case "camel":
-                    result_case = Case.CAMEL;
+                    output_case = Case.CAMEL;
                     return true;
                 case "pascal":
-                    result_case = Case.PASCAL;
+                    output_case = Case.PASCAL;
                     return true;
                 case "snake":
-                    result_case = Case.SNAKE;
+                    output_case = Case.SNAKE;
                     return true;
                 case "kebab":
-                    result_case = Case.KEBAB;
+                    output_case = Case.KEBAB;
                     return true;
                 case "sentence":
-                    result_case = Case.SENTENCE;
+                    output_case = Case.SENTENCE;
                     return true;
                 default:
                     warning ("Unexpected case, does nothing.");
@@ -223,8 +223,8 @@ namespace ChCase {
          * @return Expected case as representing input text
          * @since 1.1.0
          */
-        public string get_source_case_from_string () {
-            return source_case_name;
+        public string get_input_case_from_string () {
+            return input_case_name;
         }
 
         /**
@@ -233,8 +233,8 @@ namespace ChCase {
          * @return Case for output text
          * @since 1.1.0
          */
-        public string get_result_case_from_string () {
-            return result_case_name;
+        public string get_output_case_from_string () {
+            return output_case_name;
         }
 
         /**
@@ -246,27 +246,27 @@ namespace ChCase {
         public string convert_case (string text) {
             string result = text;
             PatternType.Pattern regex_pattern;
-            switch (source_case) {
+            switch (input_case) {
                 case Case.SPACE_SEPARATED:
-                    regex_pattern = new PatternType.SpaceSeparated (result_case);
+                    regex_pattern = new PatternType.SpaceSeparated (output_case);
                     break;
                 case Case.CAMEL:
-                    regex_pattern = new PatternType.Camel (result_case);
+                    regex_pattern = new PatternType.Camel (output_case);
                     break;
                 case Case.PASCAL:
-                    regex_pattern = new PatternType.Pascal (result_case);
+                    regex_pattern = new PatternType.Pascal (output_case);
                     break;
                 case Case.SNAKE:
-                    regex_pattern = new PatternType.Snake (result_case);
+                    regex_pattern = new PatternType.Snake (output_case);
                     break;
                 case Case.KEBAB:
-                    regex_pattern = new PatternType.Kebab (result_case);
+                    regex_pattern = new PatternType.Kebab (output_case);
                     break;
                 case Case.SENTENCE:
-                    regex_pattern = new PatternType.Sentence (result_case);
+                    regex_pattern = new PatternType.Sentence (output_case);
                     break;
                 default:
-                    warning ("Invalid Case: %d", source_case);
+                    warning ("Invalid Case: %d", input_case);
                     return result;
             }
 

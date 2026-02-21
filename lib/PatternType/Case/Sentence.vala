@@ -5,8 +5,8 @@
 
 namespace ChCase.PatternType {
     public class Sentence : Pattern {
-        public Sentence (Case result_case) {
-            base (result_case);
+        public Sentence (Case output_case) {
+            base (output_case);
         }
 
         protected override void to_space_separated () {

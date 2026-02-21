@@ -5,8 +5,8 @@
 
 namespace ChCase.PatternType {
     public class Kebab : Pattern {
-        public Kebab (Case result_case) {
-            base (result_case);
+        public Kebab (Case output_case) {
+            base (output_case);
         }
 
         protected override void to_space_separated () {
