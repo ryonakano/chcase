@@ -5,8 +5,8 @@
 
 namespace ChCase.PatternType {
     public class Pascal : Pattern {
-        public Pascal (Case result_case) {
-            base (result_case);
+        public Pascal (Case output_case) {
+            base (output_case);
         }
 
         protected override void to_space_separated () {

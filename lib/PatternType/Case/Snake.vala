@@ -5,8 +5,8 @@
 
 namespace ChCase.PatternType {
     public class Snake : Pattern {
-        public Snake (Case result_case) {
-            base (result_case);
+        public Snake (Case output_case) {
+            base (output_case);
         }
 
         protected override void to_space_separated () {
