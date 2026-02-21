@@ -147,8 +147,8 @@ namespace ChCase {
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases.
          *
-         * @param in_case Expected case as representing input text
-         * @param out_case Case for output text
+         * @param in_case   Expected case as representing input text
+         * @param out_case  Case for output text
          */
         public Converter.with_case (Case in_case, Case out_case) {
             input_case = in_case;
@@ -158,8 +158,8 @@ namespace ChCase {
         /**
          * Creates a new {@link ChCase.Converter} object with the specified cases in string.
          *
-         * @param in_case Expected case as representing input text, in string
-         * @param out_case Case for output text, in string
+         * @param in_case   Expected case as representing input text, in string
+         * @param out_case  Case for output text, in string
          */
         public Converter.with_case_from_string (string in_case, string out_case) {
             set_input_case_from_string (in_case);
@@ -169,7 +169,7 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text.
          *
-         * @param src_case Expected case as representing input text
+         * @param src_case  Expected case as representing input text
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.set_input_case")]
@@ -180,7 +180,7 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text.
          *
-         * @param in_case Expected case as representing input text
+         * @param in_case   Expected case as representing input text
          * @since 2.4.0
          */
         [CCode (cname = "_set_input_case")]
@@ -191,7 +191,7 @@ namespace ChCase {
         /**
          * Set currently specified case for output text.
          *
-         * @param res_case Case for output text
+         * @param res_case  Case for output text
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.set_output_case")]
         [CCode (cname = "_set_result_case")]
@@ -201,7 +201,7 @@ namespace ChCase {
         /**
          * Set currently specified case for output text.
          *
-         * @param out_case Case for output text
+         * @param out_case  Case for output text
          * @since 2.4.0
          */
         [CCode (cname = "_set_output_case")]
@@ -212,7 +212,7 @@ namespace ChCase {
         /**
          * Get currently specified and expected case as representing input text.
          *
-         * @return Expected case as representing input text
+         * @return          Expected case as representing input text
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.get_input_case")]
@@ -223,7 +223,7 @@ namespace ChCase {
         /**
          * Get currently specified and expected case as representing input text.
          *
-         * @return Expected case as representing input text
+         * @return          Expected case as representing input text
          * @since 2.4.0
          */
         [CCode (cname = "_get_input_case")]
@@ -234,7 +234,7 @@ namespace ChCase {
         /**
          * Get currently specified case for output text.
          *
-         * @return Case for output text
+         * @return          Case for output text
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.get_output_case")]
@@ -245,7 +245,7 @@ namespace ChCase {
         /**
          * Get currently specified case for output text.
          *
-         * @return Case for output text
+         * @return          Case for output text
          * @since 2.4.0
          */
         [CCode (cname = "_get_output_case")]
@@ -256,8 +256,8 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text, in string.
          *
-         * @param src_case Expected case as representing input text
-         * @return true if the case is one of {@link ChCase.Case}
+         * @param src_case  Expected case as representing input text, in string
+         * @return          true if the case is one of {@link ChCase.Case}
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.set_input_case_from_string")]
@@ -267,8 +267,8 @@ namespace ChCase {
         /**
          * Set currently specified and expected case as representing input text, in string.
          *
-         * @param in_case Expected case as representing input text
-         * @return true if the case is one of {@link ChCase.Case}
+         * @param in_case   Expected case as representing input text, in string
+         * @return          true if the case is one of {@link ChCase.Case}
          * @since 2.4.0
          */
         public bool set_input_case_from_string (string in_case) {
@@ -300,7 +300,8 @@ namespace ChCase {
         /**
          * Set currently specified case for output text, in string.
          *
-         * @return true if the case is one of {@link ChCase.Case}
+         * @param res_case  Case for output text, in string
+         * @return          true if the case is one of {@link ChCase.Case}
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.set_output_case_from_string")]
         public bool set_result_case_from_string (string res_case) {
@@ -309,7 +310,8 @@ namespace ChCase {
         /**
          * Set currently specified case for output text, in string.
          *
-         * @return true if the case is one of {@link ChCase.Case}
+         * @param out_case  Case for output text, in string
+         * @return          true if the case is one of {@link ChCase.Case}
          * @since 2.4.0
          */
         public bool set_output_case_from_string (string out_case) {
@@ -341,7 +343,7 @@ namespace ChCase {
         /**
          * Get currently specified and expected case as representing input text, in string.
          *
-         * @return Expected case as representing input text
+         * @return          Expected case as representing input text, in string
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.get_input_case_from_string")]
@@ -351,7 +353,7 @@ namespace ChCase {
         /**
          * Get currently specified and expected case as representing input text, in string.
          *
-         * @return Expected case as representing input text
+         * @return          Expected case as representing input text, in string
          * @since 2.4.0
          */
         public string get_input_case_from_string () {
@@ -361,7 +363,7 @@ namespace ChCase {
         /**
          * Get currently specified case for output text, in string.
          *
-         * @return Case for output text
+         * @return          Case for output text, in string
          * @since 1.1.0
          */
         [Version (deprecated = true, deprecated_since = "2.4.0", replacement = "ChCase.Converter.get_output_case_from_string")]
@@ -371,7 +373,7 @@ namespace ChCase {
         /**
          * Get currently specified case for output text, in string.
          *
-         * @return Case for output text
+         * @return          Case for output text, in string
          * @since 2.4.0
          */
         public string get_output_case_from_string () {
@@ -381,8 +383,8 @@ namespace ChCase {
         /**
          * Perform case conversion.
          *
-         * @param text Text to be converted
-         * @return Result text after conversion
+         * @param text      Text to be converted
+         * @return          Result text after conversion
          */
         public string convert_case (string text) {
             string result = text;
