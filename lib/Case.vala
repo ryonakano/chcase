@@ -6,43 +6,43 @@
 namespace ChCase {
 
     /**
-     * Represents the case of a text.
+     * Type of letter cases in a piece of text.
      */
     public enum Case {
         /**
-         * Text that uses a space for separation, e.g. "do null check before quitting".
+         * Use a space as a word separator, e.g. "foo bar baz".
          */
         SPACE_SEPARATED,
 
         /**
-         * Camel Case text, e.g. "doNullCheckBeforeQuitting".
+         * Camel Case, e.g. "fooBarBaz".
          */
         CAMEL,
 
         /**
-         * Pascal Case text, e.g. "DoNullCheckBeforeQuitting".
+         * Pascal Case, e.g. "FooBarBaz".
          */
         PASCAL,
 
         /**
-         * Snake Case text, e.g. "do_null_check_before_quitting".
+         * Snake Case, e.g. "foo_bar_baz".
          */
         SNAKE,
 
         /**
-         * Kebab Case text, e.g. "do-null-check-before-quitting".
+         * Kebab Case, e.g. "foo-bar-baz".
          */
         KEBAB,
 
         /**
-         * Sentence Case text, e.g. "Do null check before quitting".
+         * Sentence Case, e.g. "Foo bar baz".
          */
         SENTENCE;
 
         /**
-         * Return the case in string.
+         * Return the string representation of a letter case.
          * 
-         * @return the case represented in string.
+         * @return      the string representation of a letter case
          */
         public string to_string () {
             switch (this) {
