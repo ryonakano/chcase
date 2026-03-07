@@ -16,6 +16,7 @@ namespace ChCase {
     *   var converter = new ChCase.Converter.with_case (ChCase.Case.SPACE_SEPARATED, ChCase.Case.CAMEL);
     *   string input_text = "say hello to ChCase";
     *   string output_text = converter.convert_case (input_text);
+    *   stdout.printf (@"$output_text\n", output_text); // result: sayHelloToChCase
     * }}}
     */
     public class Converter : GLib.Object {
