@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2020-2023 Ryo Nakano <ryonakaknock3@gmail.com>
  */
 
+[CCode (lower_case_cprefix = "chcase_pattern_type_")]
 namespace ChCase.PatternType {
     public class Pascal : Pattern {
         public Pascal (Case output_case) {
