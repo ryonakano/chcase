@@ -1,6 +1,6 @@
 project('chcase',
   'vala', 'c',
-  version: '2.4.0',
+  version: '3.0.0-alpha.1',
   meson_version: '>= 0.56.0',
 )
 
