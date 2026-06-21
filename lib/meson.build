@@ -10,15 +10,13 @@ sources = files(
   'Converter.vala',
 )
 
-include_dir = get_option('prefix') / get_option('includedir') / meson.project_name()
-
 chcase_lib = library(
   'chcase',
   sources,
   dependencies: libchcase_deps,
   vala_header: 'chcase.h',
   install: true,
-  install_dir: [true, include_dir, true],
+  install_dir: [true, true, true],
 )
 
 install_data(
