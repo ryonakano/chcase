@@ -17,7 +17,6 @@ chcase_lib = library(
   sources,
   dependencies: libchcase_deps,
   vala_header: 'chcase.h',
-  build_subdir: 'chcase',
   install: true,
   install_dir: [true, include_dir, true],
 )
