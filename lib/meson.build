@@ -34,7 +34,6 @@ chcase_pc = pkgconfig.generate(
   chcase_lib,
   name: 'chcase',
   requires: libchcase_deps,
-  subdirs: ['chcase'],
   description: 'A small library to convert case of a given string',
   version: meson.project_version(),
   url: 'https://github.com/ryonakano/chcase',
