@@ -1,7 +1,7 @@
 project('chcase',
   'vala', 'c',
   version: '3.0.0-alpha.3',
-  meson_version: '>= 0.56.0',
+  meson_version: '>= 1.10.0',
 )
 
 pkgconfig = import('pkgconfig')

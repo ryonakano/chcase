@@ -1,4 +1,14 @@
-subdir('chcase')
+sources = files(
+  'PatternType/Case/Camel.vala',
+  'PatternType/Case/Kebab.vala',
+  'PatternType/Case/Pascal.vala',
+  'PatternType/Case/Sentence.vala',
+  'PatternType/Case/Snake.vala',
+  'PatternType/Case/SpaceSeparated.vala',
+  'PatternType/Pattern.vala',
+  'Case.vala',
+  'Converter.vala',
+)
 
 include_dir = get_option('prefix') / get_option('includedir') / meson.project_name()
 
@@ -7,6 +17,7 @@ chcase_lib = library(
   sources,
   dependencies: libchcase_deps,
   vala_header: 'chcase.h',
+  build_subdir: 'chcase',
   install: true,
   install_dir: [true, include_dir, true],
 )
